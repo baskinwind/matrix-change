@@ -18,7 +18,6 @@ mc.$on('movePoint', ({point, mode}) => {
   dom.dataset.change = '1'
   dom.style.transition = mode.duration / 1000 + 's'
   dom.addEventListener('transitionend', function listen() {
-    console.log(oldClass)
     dom.children[0].style.backgroundImage = `url(${url})`
     dom.className = oldClass
     dom.removeEventListener('transitionend', listen)
@@ -26,12 +25,12 @@ mc.$on('movePoint', ({point, mode}) => {
   })
 })
 
-mc.movePoint(mMove.mode[8])
+mc.movePoint(mMove.mode[0])
 
 function getRandom(min, max) {
   return Math.round(Math.random() * (max - min)) + min
 }
 
 app.addEventListener('click', () => {
-  mc.movePoint(mMove.mode[getRandom(0, mMove.mode.length - 1)])
+  mc.movePoint(mMove.mode[getRandom(0, 6)])
 })

@@ -1,14 +1,17 @@
 var app = document.getElementById('app')
 var url = 'http://7xse2z.com1.z0.glb.clouddn.com/257084.jpg'
 
-mMove.initStyle('m-move-wrap', 7, 9)
-var doms = mMove.initDom(app, 'm-move-wrap', 7, 9)
+var row = 7
+var col = 9
 
-var mc = new mMove.MC(7, 9)
+mMove.initStyle('m-move-wrap', row, col)
+var doms = mMove.initDom(app, 'm-move-wrap', row, col)
+
+var mc = new mMove.MC(row, col)
 
 var animateType = 'test'
 
-mc.$on('movePoint', ({point, mode}) => {
+mc.$on('hitPoint', ({point, mode}) => {
   let dom = doms[point.x - 1][point.y - 1]
   if (dom.dataset.change) {
     return
@@ -25,12 +28,12 @@ mc.$on('movePoint', ({point, mode}) => {
   })
 })
 
-mc.movePoint(mMove.mode[0])
+mc.movePoint(mMove.mode[3])
 
 function getRandom(min, max) {
   return Math.round(Math.random() * (max - min)) + min
 }
 
 app.addEventListener('click', () => {
-  mc.movePoint(mMove.mode[getRandom(0, 6)])
+  mc.movePoint(mMove.mode[getRandom(0, mMove.mode.length - 1)])
 })

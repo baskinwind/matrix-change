@@ -9,6 +9,7 @@ module.exports = {
     library: "mMove",
     libraryTarget: 'umd'
   },
+  devtool: "source-map",
   module: {
     rules: [
       {

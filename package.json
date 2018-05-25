@@ -1,6 +1,6 @@
 {
   "name": "matrixchange",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "炫酷的矩阵运动",
   "main": "index.js",
   "author": "aco <wwsxuan@163.com>",

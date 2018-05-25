@@ -82,7 +82,7 @@ let mChange = require('matrixchange')
 
 `movePoint` 函数参数说明：
 
-- 参一: 运动形式，可以从 `vMove.mode` 列表中取
+- 参一: 运动形式，可以从 `mChange.mode` 列表中取
 - 参二（`option`）: 确定动画效果，可以不传，使用默认效果
 
 例子：

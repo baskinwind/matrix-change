@@ -31,6 +31,8 @@ let mChange = require('matrixchange')
 
 [DEMO](http://acohome.cn/demo/matrix/index.html)
 
+<script async src="//jsfiddle.net/acccco/pgff8k5j/1/embed/js,html,result/"></script>
+
 ### 原理说明
 
 用 `Matrix` 生成一个二维矩阵，通过规定的运动形式，确定出需要运动的点，触发特定事件，在特定时间后进行下一轮的运动，确定运动点，触发事件，直到所有的点都运动过。

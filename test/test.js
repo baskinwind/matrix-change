@@ -18,8 +18,8 @@ move.movePoint(mMove.mode[5])
 
 app.addEventListener('click', function () {
   move.movePoint(mMove.mode[getRandom(0, mMove.mode.length - 1)], {
+    animate: true,
     classNameIn: 'animated flipInX',
-    classNameOut: 'animated flipOutX',
-    animate: true
+    classNameOut: 'animated flipOutX'
   })
 })

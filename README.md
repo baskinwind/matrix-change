@@ -154,5 +154,8 @@ move.movePoint(mMove.mode[0], {
 - `init` 函数参数即为 `Matrix` 实例初始化的行列信息
 - `check` 函数参数即为每个二维矩阵的点，从 `0` 开始
 
+### 其他
+
+由于库中的样式是通过 `js` 生成的，目的也是为了不让使用者关注于 `css` 的实现以及方便使用，但对于熟悉 `css` 的使用者来说，`lib` 目录下有单独的  `scss` 文件，用于生成样式，项目中 `initStyle` 生成的 `css` 和这个 `scss` 文件一致的，所以如果想自定义开发，看看这个 `scss` 文件。
 
 有任何问题，可以联系我。[wwsxuan@163.com](mailto:wwsxuan@163.com)

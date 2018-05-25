@@ -1,13 +1,25 @@
 {
   "name": "matrixmove",
   "version": "1.0.0",
-  "description": "",
+  "description": "炫酷的矩阵运动",
   "main": "index.js",
+  "author": "aco <wwsxuan@163.com>",
+  "bugs": {
+    "url": "https://github.com/acccco/matrixChange/issues"
+  },
+  "homepage": "https://github.com/acccco/matrixChange",
+  "keywords": [
+    "matrix",
+    "animation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acccco/matrixChange"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "webpack"
   },
-  "author": "aco",
-  "license": "MIT",
   "devDependencies": {
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-runtime": "^6.23.0",

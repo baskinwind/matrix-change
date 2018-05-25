@@ -31,7 +31,7 @@ let mChange = require('matrixchange')
 
 [DEMO](http://acohome.cn/demo/matrix/index.html)
 
-<script async src="//jsfiddle.net/acccco/pgff8k5j/embed/js,html,result/"></script>
+[jsfiddle](https://jsfiddle.net/acccco/pgff8k5j/)
 
 ### 原理说明
 

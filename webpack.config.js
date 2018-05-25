@@ -4,9 +4,9 @@ module.exports = {
   mode: 'production',
   entry: './index.js',
   output: {
-    filename: 'matrixMove.js',
+    filename: 'matrixChange.js',
     path: path.resolve(__dirname, 'dist'),
-    library: "mMove",
+    library: "mChange",
     libraryTarget: 'umd'
   },
   devtool: "source-map",

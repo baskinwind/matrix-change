@@ -1,7 +1,7 @@
 @charset "UTF-8";
 // 样式初始化 scss 效果和  initHtml/containerLayout 一样
 @mixin containerLayout($nameSpace,$row:7,$col:9) {
-  #{$nameSpace} {
+  .#{$nameSpace} {
     position: relative;
 
     .animation-item {

@@ -8,10 +8,21 @@
 <script src="../dist/matrixMove.js"></script>
 ```
 
-使用 webpack 或其他进行开发
+npm
 
 ```
-import * as mMove from 'matrixMove'
+npm install matrixchange --save
+```
+
+yarn
+
+```
+yarn add matrixchange
+```
+
+```
+let mChange = require('matrixchange')
+// ...
 ```
 
 ---
@@ -22,7 +33,7 @@ import * as mMove from 'matrixMove'
 
 ### 方法说明
 
-引用文件后，会产生 `mMove` 对象，对象下有 5 个属性：
+引用文件后，会产生 `mChange` 对象，对象下有 5 个属性：
 
 - containerLayout/Function: 用于生成布局样式，需传递 `3` 个参数（类名/行数/列数）
 - initDom/Function: 用于生成 `DOM` 节点，需传递 `4` 个参数（挂载的节点/类名/行数/列数）
@@ -79,23 +90,23 @@ var urls = ['http://7xse2z.com1.z0.glb.clouddn.com/257084.jpg',
   'http://7xse2z.com1.z0.glb.clouddn.com/285848.jpg',
   'http://7xse2z.com1.z0.glb.clouddn.com/3455%20%281%29.jpg']
 
-var move = mMove.makeMatrixChange(app, {
+var move = mChange.makeMatrixChange(app, {
   images: urls,
   row: 7,
   col: 9
 })
 
 // 使用默认的动画效果
-move.movePoint(mMove.mode[0])
+move.movePoint(mChange.mode[0])
 
 // 使用 transition 过渡，提供类名即可，eg: .test{transfrom:scale(0);}
-move.movePoint(mMove.mode[0], {
+move.movePoint(mChange.mode[0], {
     className: 'test'
 })
 
 // 使用 animation 动画，比如配合 animation.css 动画库
 // animation 需要提供两个类名，进场动画和出场动画，同时需要标志这个是 animation 动画
-move.movePoint(mMove.mode[0], {
+move.movePoint(mChange.mode[0], {
     animate: true,
     classNameIn: 'animated flipInX',
     classNameOut: 'animated flipOutX'
@@ -103,7 +114,7 @@ move.movePoint(mMove.mode[0], {
 
 // 使用特定的图片进行动画
 // 不传 image 则随机取传入的图片列表中的一张图片
-move.movePoint(mMove.mode[0], {
+move.movePoint(mChange.mode[0], {
     animate: true,
     classNameIn: 'animated flipInX',
     classNameOut: 'animated flipOutX',
@@ -114,7 +125,7 @@ move.movePoint(mMove.mode[0], {
 
 ### 扩展
 
-1. `makeMatrixChange` 是使用 `mMove` 提供的方法写的一个函数，如果有需求自定义矩阵动画效果，可以使用提供的方法自己封装一个
+1. `makeMatrixChange` 是使用 `mChange` 提供的方法写的一个函数，如果有需求自定义矩阵动画效果，可以使用提供的方法自己封装一个
 2. 如果仅仅是不满足于当前的运动形式，也可以自定义运动形式
 
 #### 自定义运动形式

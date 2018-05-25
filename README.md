@@ -5,7 +5,7 @@
 浏览器
 
 ```
-<script src="../dist/matrixMove.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/matrixchange/dist/matrixChange.js"></script>
 ```
 
 npm

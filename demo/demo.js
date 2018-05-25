@@ -14,7 +14,7 @@ function getRandom(min, max) {
   return Math.round(Math.random() * (max - min)) + min
 }
 
-move.movePoint(mChange.mode[5])
+move.movePoint(mChange.mode[0])
 
 app.addEventListener('click', function () {
   move.movePoint(mChange.mode[getRandom(0, mChange.mode.length - 1)], {

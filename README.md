@@ -138,7 +138,7 @@ move.movePoint(mChange.mode[0], {
 
 - interval/Number: 每次运动的间隔时间
 - init/Function: 用于初始化配置，在运动前会调用
-- check/Function: 用于判断当次运动需要运动的店
+- check/Function: 用于判断当次运动需要运动的点
 - next/Function: 每次运动后对于下次运动的配置
 - end/Function: 用于判断运动是否结束，每次运动后都会调用
 - 其他: 可以配置一些其他的字段，`hitPoint` 事件会将当前的运动形式放在回调函数的参数中。比如，定义了 `duration` 字段用于生成过渡的事件 `dom.style.transition = mode.duration / 1000 + 's'` 。

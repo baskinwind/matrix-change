@@ -4,31 +4,35 @@
   <meta charset="UTF-8">
   <title>一个炫酷的矩阵动画</title>
   <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
-  <style>
-    html, body, #app {
-      height: 100%;
-      width: 100%;
-    }
-
-    * {
-      padding: 0;
-      margin: 0;
-    }
-
-    .animation-item:before {
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 100%;
-      box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
-      z-index: 3;
-      box-sizing: border-box;
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
+<div id="option" class="flex">
+  <div class="wrap">
+    <div class="flex">
+      <div class="col-1">OUT</div>
+      <div class="col-2">
+        <select name="animation-in" v-model="outSelect">
+          <option v-for="item in inList" :value="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="col-1">IN</div>
+      <div class="col-2">
+        <select name="animation-in" v-model="inSelect">
+          <option v-for="item in outList" :value="item">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="btn" @click="start">ACTIVE</div>
+    </div>
+  </div>
+</div>
 <div id="app"></div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/matrixchange/dist/matrixChange.js"></script>
-<script src="demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="index.js"></script>
 </html>

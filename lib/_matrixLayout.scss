@@ -30,12 +30,12 @@
   @for $i from 0 to $row {
     @for $j from 0 to $col {
       #{$nameSpace} .item-#{$i}-#{$j} {
-        top: 100%/$row*($i - 1);
-        left: 100%/$col*($j - 1);
+        top: 100%/$row*($i);
+        left: 100%/$col*($j);
 
         .child {
-          top: -100%*($i - 1);
-          left: -100%*($j - 1);
+          top: -100%*($i);
+          left: -100%*($j);
         }
       }
     }

@@ -32,8 +32,8 @@ html, body, #app, #option {
 }
 
 .wrap {
-  padding: 10px 10px 0 10px;
-  background: rgba(0, 0, 0, .4);
+  padding: 20px 20px 10px 20px;
+  background: rgba(0, 0, 0, .6);
   color: #fff;
   width: 200px;
   line-height: 30px;
@@ -43,11 +43,13 @@ html, body, #app, #option {
 }
 
 .wrap .flex {
-  padding-bottom: 10px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, .4);
+  border-radius: 4px;
 }
 
 .wrap .col-1 {
-  flex: 0 0 30px;
+  flex: 0 0 68px;
   padding-right: 10px;
   text-align: right;
 }
@@ -62,11 +64,15 @@ select {
   border: none;
   display: block;
   outline: none;
-  background: rgba(255, 255, 255, .4);
+  color: #fff;
+  background: none;
+}
+
+option {
+  color: #000;
 }
 
 .btn {
-  background: #96b97d;
   border-radius: 4px;
   width: 100%;
   text-align: center;

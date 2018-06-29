@@ -1,5 +1,10 @@
 # 让矩阵动起来
 
+<p>
+  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.2.1-blue.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+</p>
+
 ### 使用插件
 
 浏览器
@@ -35,31 +40,34 @@ let mChange = require('matrixchange')
 
 ### 原理说明
 
-用 `Matrix` 生成一个二维矩阵，通过规定的运动形式，确定出需要运动的点，触发特定事件，在特定时间后进行下一轮的运动，确定运动点，触发事件，直到所有的点都运动过。
+1. 生成一个二维矩阵（ `Matrix` ）
+2. 使用指定的运动形式，遍历二维矩阵，确定出需要运动的点，触发 `hitPoint` 事件
+3. 在指定的时间间隔后，进行下一轮的运动
+4. 使用指定的运动结束判断，通过的话执行步骤 `2` ，否则结束运动
 
 ### 方法说明
 
-引用文件后，会产生 `mChange` 对象，对象下有 5 个属性：
+`mChange` 对象属性：
 
-- containerLayout/Function: 用于生成布局样式，需传递 `3` 个参数（类名/行数/列数）
-- initDom/Function: 用于生成 `DOM` 节点，需传递 `4` 个参数（挂载的节点/类名/行数/列数）
+- containerLayout/Function: 用于生成布局样式，需传递 `3` 个参数（命名空间/行数/列数）
+- initDom/Function: 用于生成 `DOM` 节点，需传递 `4` 个参数（挂载的节点/命名空间/行数/列数）
 - mode/Array: 提供一组运动形式，目前有 `19` 种
-- Matrix/Class: 生成一个矩阵对象，对象信息看下面
-- makeMatrixChange/Function: 包装上面 `4` 个方法的函数，用于便捷生成动画。
+- Matrix/Class: 生成一个矩阵对象
+- makeMatrixChange/Function: 便捷生成动画的方法，内部包装了以上 `4` 个方法
 
-`Matrix` 对象
+#### `Matrix` 类
 
 构造函数/属性/方法
 
 - constructor: 对象生成时需传递行列信息（`row/col`）
 - row/Number: 矩阵行数
 - col/Number: 矩阵列数
-- movePoint/Function: 根据提供的运动形式(`mode`)/运动参数(`option`)，进行运动
+- movePoint/Function: 根据提供的运动形式(`mode` 列表中的一项)和运动参数(`option`)，进行运动，确定需要运动的点后触发 `hitPoint` 事件
 
-`event`
+事件
 
 - changeStart: 运动开始前触发
-- hitPoint: 某个点确认需要运动后触发，事件回调参数包含坐标(`e.point`)/运动形式(`e.mode`)/运动参数(`e.option`)
+- hitPoint: `Matrix` 实例执行 `movePoint` 后触发，事件回调参数包含坐标(`e.point`)/运动形式(`e.mode`)/运动参数(`e.option`)
 - changeEnd: 运动结束后触发
 
 ### makeMatrixChange 封装好的运动函数
@@ -84,8 +92,8 @@ let mChange = require('matrixchange')
 
 `movePoint` 函数参数说明：
 
-- 参一: 运动形式，可以从 `mChange.mode` 列表中取
-- 参二（`option`）: 确定动画效果，可以不传，使用默认效果
+- 参一: 运动形式，可以从 `mChange.mode` 列表中取一个
+- 参二（`option`）: 规定动画效果，可以不传，使用默认效果，具体的使用可以查看下面的例子
 
 例子：
 
@@ -145,7 +153,7 @@ move.movePoint(mChange.mode[0], {
 - end/Function: 用于判断运动是否结束，每次运动后都会调用
 - 其他: 可以配置一些其他的字段，`hitPoint` 事件会将当前的运动形式放在回调函数的参数中。比如，定义了 `duration` 字段用于生成过渡的事件 `dom.style.transition = mode.duration / 1000 + 's'` 。
 
-一个简单的栗子
+一个简单的栗子，比如 `mChange.mode[4]` 的具体内容：
 
 ```
 {
@@ -169,10 +177,8 @@ move.movePoint(mChange.mode[0], {
 ```
 
 - `init` 函数参数即为 `Matrix` 实例初始化的行列信息
-- `check` 函数参数即为每个二维矩阵的点，从 `0` 开始
+- `check` 函数参数即为每个二维矩阵的点，从 `0` 开始，当 `check` 返回 `true` 时，就会触发 `hitPoint` 事件
 
 ### 其他
 
 由于库中的样式是通过 `js` 生成的，目的也是为了不让使用者关注于 `css` 的实现以及方便使用，但对于熟悉 `css` 的使用者来说，`lib` 目录下有单独的  `scss` 文件，用于生成样式，项目中 `initStyle` 生成的 `css` 和这个 `scss` 文件一致的，所以如果想自定义开发，看看这个 `scss` 文件。
-
-有任何问题，可以联系我。[wwsxuan@163.com](mailto:wwsxuan@163.com)

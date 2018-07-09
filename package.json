@@ -1,6 +1,6 @@
 {
   "name": "matrixchange",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "矩阵运动",
   "main": "index.js",
   "author": "aco <wwsxuan@163.com>",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "eslint": "eslint --ext .js lib"
+    "lint": "eslint --ext .js lib"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

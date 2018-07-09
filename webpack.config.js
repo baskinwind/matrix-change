@@ -1,4 +1,4 @@
-var path = require('path');
+var path = require('path')
 
 module.exports = {
   mode: 'production',
@@ -6,16 +6,25 @@ module.exports = {
   output: {
     filename: 'matrixChange.js',
     path: path.resolve(__dirname, 'dist'),
-    library: "mChange",
+    library: 'mChange',
     libraryTarget: 'umd'
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [path.resolve(__dirname, 'lib')],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
       {
         test: /.js$/,
         loader: 'babel-loader'
       }
     ]
   }
-};
+}

@@ -1,13 +1,13 @@
-# 让矩阵动起来
+# matrixChange
 
 <p>
   <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.2.1-blue.svg" alt="Version"></a>
   <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
 </p>
 
-### 使用插件
+### use plugin
 
-浏览器
+Browser
 
 ```
 <script src="https://cdn.jsdelivr.net/npm/matrixchange/dist/matrixChange.js"></script>
@@ -28,19 +28,63 @@ yarn add matrixchange
 ```
 let mChange = require('matrixchange')
 // ...
+// or
+import matrixChange from 'matrixchange'
+// ...
 ```
 
 ---
 
-### DEMO
+### demo
 
-[DEMO](http://acohome.cn/demo/matrix/index.html)
+[Live Demo](http://acohome.cn/demo/matrix/index.html)
 
 [jsfiddle](https://jsfiddle.net/acccco/pgff8k5j/)
 
+### how to use
+
+```
+var app = document.getElementById('app')
+var urls = ['http://7xse2z.com1.z0.glb.clouddn.com/257084.jpg',
+  'http://7xse2z.com1.z0.glb.clouddn.com/257453.jpg',
+  'http://7xse2z.com1.z0.glb.clouddn.com/285848.jpg',
+  'http://7xse2z.com1.z0.glb.clouddn.com/3455%20%281%29.jpg']
+
+var move = mChange.makeMatrixChange(app, {
+  images: urls,
+  row: 7,
+  col: 9
+})
+
+// 使用默认的动画效果
+move.movePoint(mChange.mode[0])
+
+// 使用 transition 过渡，提供类名即可，eg: .test{transfrom:scale(0);}
+move.movePoint(mChange.mode[0], {
+    className: 'test'
+})
+
+// 使用 animation 动画，比如配合 animation.css 动画库
+// animation 需要提供两个类名，进场动画和出场动画，同时需要标志这个是 animation 动画
+move.movePoint(mChange.mode[0], {
+    animate: true,
+    classNameIn: 'animated flipInX',
+    classNameOut: 'animated flipOutX'
+})
+
+// 使用特定的图片进行动画
+// 不传 image 则随机取传入的图片列表中的一张图片
+move.movePoint(mChange.mode[0], {
+    animate: true,
+    classNameIn: 'animated flipInX',
+    classNameOut: 'animated flipOutX',
+    image: urls[0]
+})
+```
+
 ### 原理说明
 
-1. 生成一个二维矩阵（ `Matrix` ）
+1. 生成一个二维矩阵（ `Matrix` ），根据矩阵生成布局
 2. 使用指定的运动形式，遍历二维矩阵，确定出需要运动的点，触发 `hitPoint` 事件
 3. 在指定的时间间隔后，进行下一轮的运动
 4. 使用指定的运动结束判断，通过的话执行步骤 `2` ，否则结束运动
@@ -89,53 +133,6 @@ let mChange = require('matrixchange')
 - movePoint/Function: 调用即开始运动
 - changeImages/Function: 改变原始的图片列表，主要用于图片的懒加载，比如为了防止图片未加载好显示出来，在浏览器缓存好图片后，更换图片列表
 - matrixChange: 原始的 `Matrix` 对象
-
-`movePoint` 函数参数说明：
-
-- 参一: 运动形式，可以从 `mChange.mode` 列表中取一个
-- 参二（`option`）: 规定动画效果，可以不传，使用默认效果，具体的使用可以查看下面的例子
-
-例子：
-
-```
-var app = document.getElementById('app')
-var urls = ['http://7xse2z.com1.z0.glb.clouddn.com/257084.jpg',
-  'http://7xse2z.com1.z0.glb.clouddn.com/257453.jpg',
-  'http://7xse2z.com1.z0.glb.clouddn.com/285848.jpg',
-  'http://7xse2z.com1.z0.glb.clouddn.com/3455%20%281%29.jpg']
-
-var move = mChange.makeMatrixChange(app, {
-  images: urls,
-  row: 7,
-  col: 9
-})
-
-// 使用默认的动画效果
-move.movePoint(mChange.mode[0])
-
-// 使用 transition 过渡，提供类名即可，eg: .test{transfrom:scale(0);}
-move.movePoint(mChange.mode[0], {
-    className: 'test'
-})
-
-// 使用 animation 动画，比如配合 animation.css 动画库
-// animation 需要提供两个类名，进场动画和出场动画，同时需要标志这个是 animation 动画
-move.movePoint(mChange.mode[0], {
-    animate: true,
-    classNameIn: 'animated flipInX',
-    classNameOut: 'animated flipOutX'
-})
-
-// 使用特定的图片进行动画
-// 不传 image 则随机取传入的图片列表中的一张图片
-move.movePoint(mChange.mode[0], {
-    animate: true,
-    classNameIn: 'animated flipInX',
-    classNameOut: 'animated flipOutX',
-    image: urls[0]
-})
-
-```
 
 ### 扩展
 

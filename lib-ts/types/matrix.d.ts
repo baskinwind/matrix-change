@@ -6,5 +6,6 @@ export interface MatrixInterface extends EventInterface {
   row: number;
   col: number;
   lock: boolean;
-  movePoint: (mode: modeType, option: normalObject) => void;
+
+  movePoint (mode: modeType, option: normalObject): void;
 }

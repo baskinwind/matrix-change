@@ -49,7 +49,7 @@ export function makeMatrixChange (dom: HTMLElement, option: normalObject): expor
     image = option.images[getRandom(0, option.images.length - 1)];
   });
 
-  ma.$on('hitPoint', ({point, mode, option}: { point: pointType, mode: modeType, option: optionType }) => {
+  ma.$on('hitPoint', ({ point, mode, option }: { point: pointType, mode: modeType, option: optionType }) => {
     image = option.image ? option.image : image;
     let className = option.className ? option.className : 'defaultChange';
     let classNameIn = '';

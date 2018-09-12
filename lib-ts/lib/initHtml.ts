@@ -6,7 +6,7 @@ export function containerLayout (nameSpace: string, row: number, col: number): v
     'position: absolute;',
     'overflow: hidden;',
     'z-index: 2;'
-  ].join('')
+  ].join('');
 
   let childSizeStyle = [
     `width:${100 * col}%;`,
@@ -16,27 +16,27 @@ export function containerLayout (nameSpace: string, row: number, col: number): v
     'position: absolute;',
     'z-index: 1;',
     'background-position: 50% 50%;'
-  ].join('')
+  ].join('');
 
-  let posiStyle = []
+  let posiStyle = [];
   for (let i = 1; i <= row; i++) {
     for (let j = 1; j <= col; j++) {
       let wrapStyle = [
         `top:${100 / row * (i - 1)}%;`,
         `left:${100 / col * (j - 1)}%;`
-      ].join('')
-      posiStyle.push(`.${nameSpace} .item-${i}-${j}{${wrapStyle}}`)
+      ].join('');
+      posiStyle.push(`.${nameSpace} .item-${i}-${j}{${wrapStyle}}`);
       let childStyle = [
         `top:${-100 * (i - 1)}%;`,
         `left:${-100 * (j - 1)}%;`
-      ].join('')
-      posiStyle.push(`.${nameSpace} .item-${i}-${j} .child{${childStyle}}`)
+      ].join('');
+      posiStyle.push(`.${nameSpace} .item-${i}-${j} .child{${childStyle}}`);
     }
   }
 
   let containStyle = [
     'position:relative'
-  ].join('')
+  ].join('');
 
   let matrixChage = [
     `.${nameSpace}{${containStyle}}`,
@@ -44,30 +44,30 @@ export function containerLayout (nameSpace: string, row: number, col: number): v
     `.${nameSpace} .animation-item{${wrapSizeStyle}}`,
     `.${nameSpace} .animation-item .child{${childSizeStyle}}`,
     posiStyle.join('')
-  ].join('')
+  ].join('');
 
-  let styleDom = document.createElement('style')
-  styleDom.innerHTML = matrixChage
-  document.head.appendChild(styleDom)
+  let styleDom = document.createElement('style');
+  styleDom.innerHTML = matrixChage;
+  document.head.appendChild(styleDom);
 }
 
 export function initDom (dom: HTMLElement, nameSpace: string, row: number, col: number): Array<Array<HTMLElement>> {
-  let fragment = document.createDocumentFragment()
-  let domMatrix = []
+  let fragment = document.createDocumentFragment();
+  let domMatrix = [];
   for (let i = 1; i <= row; i++) {
-    let rowDom = []
+    let rowDom = [];
     for (let j = 1; j <= col; j++) {
-      let dom = document.createElement('div')
-      dom.className = `animation-item item-${i}-${j}`
-      let domInner = document.createElement('div')
-      domInner.className = `child`
-      dom.appendChild(domInner)
-      fragment.appendChild(dom)
-      rowDom.push(dom)
+      let dom = document.createElement('div');
+      dom.className = `animation-item item-${i}-${j}`;
+      let domInner = document.createElement('div');
+      domInner.className = `child`;
+      dom.appendChild(domInner);
+      fragment.appendChild(dom);
+      rowDom.push(dom);
     }
-    domMatrix.push(rowDom)
+    domMatrix.push(rowDom);
   }
-  dom.className += ' ' + nameSpace
-  dom.appendChild(fragment)
-  return domMatrix
+  dom.className += ' ' + nameSpace;
+  dom.appendChild(fragment);
+  return domMatrix;
 }

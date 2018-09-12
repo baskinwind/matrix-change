@@ -19,17 +19,18 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "lint": "eslint --ext .js lib",
-    "lint-ts": "eslint --ext .ts lib-ts",
-    "tsc": "tsc"
+    "lint-es": "eslint --ext .js lib-es --fix",
+    "lint-ts": "eslint --ext .ts lib-ts --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
     "eslint": "^5.1.0",
+    "eslint-config-alloy": "^1.4.2",
     "eslint-config-standard": "^12.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.0.0",
@@ -37,6 +38,8 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-typescript": "^0.12.0",
+    "ts-loader": "^5.1.0",
     "typescript": "^3.0.3",
     "typescript-eslint-parser": "^18.0.0",
     "webpack": "^4.8.3",

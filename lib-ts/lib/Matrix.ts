@@ -1,5 +1,7 @@
-import { MatrixInterface } from './types/matrix'
-import { Event } from './Event'
+import { MatrixInterface } from '../types/matrix';
+import { modeType } from '../types/mode';
+
+import { Event } from './Event';
 
 export class Matrix extends Event implements MatrixInterface {
 
@@ -8,19 +10,19 @@ export class Matrix extends Event implements MatrixInterface {
   lock: boolean
 
   constructor (row = 7, col = 9) {
-    super()
-    this.row = row
-    this.col = col
-    this.lock = false
+    super();
+    this.row = row;
+    this.col = col;
+    this.lock = false;
   }
 
-  movePoint (mode, option = {}) {
+  movePoint (mode: modeType, option = {}) {
     if (this.lock === true) {
-      return
+      return;
     }
-    mode.init(this.row, this.col)
-    this.$emit('changeStart')
-    this.lock = true
+    mode.init(this.row, this.col);
+    this.$emit('changeStart');
+    this.lock = true;
     let timer = setInterval(() => {
       for (let i = 0; i < this.row; i++) {
         for (let j = 0; j < this.col; j++) {
@@ -32,18 +34,18 @@ export class Matrix extends Event implements MatrixInterface {
               },
               mode: mode,
               option
-            })
+            });
           }
         }
       }
-      mode.next()
+      mode.next();
       if (mode.end()) {
-        clearInterval(timer)
-        this.$emit('changeEnd')
+        clearInterval(timer);
+        this.$emit('changeEnd');
         setTimeout(() => {
-          this.lock = false
-        }, 2000)
+          this.lock = false;
+        }, 2000);
       }
-    }, mode.interval)
+    }, mode.interval);
   }
 }

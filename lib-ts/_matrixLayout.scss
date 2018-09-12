@@ -1,0 +1,43 @@
+@charset "UTF-8";
+// 样式初始化 scss 效果和  initHtml/containerLayout 一样
+@mixin containerLayout($nameSpace,$row:7,$col:9) {
+  .#{$nameSpace} {
+    position: relative;
+
+    .animation-item {
+      width: 100%/$col;
+      height: 100%/$row;
+      position: absolute;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .child {
+      width: $col*100%;
+      height: $row*100%;
+      background-size: cover;
+      display: block;
+      position: absolute;
+      z-index: 1;
+      background-position: 50% 50%;
+    }
+
+    .defaultChange {
+      transform: scale(0);
+      border-radius: 50%;
+    }
+  }
+  @for $i from 0 to $row {
+    @for $j from 0 to $col {
+      #{$nameSpace} .item-#{$i}-#{$j} {
+        top: 100%/$row*($i);
+        left: 100%/$col*($j);
+
+        .child {
+          top: -100%*($i);
+          left: -100%*($j);
+        }
+      }
+    }
+  }
+}

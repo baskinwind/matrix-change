@@ -4,19 +4,19 @@ module.exports = {
   env: {
     browser: true,
   },
+  // extends: [
+  //   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+  //   'standard'
+  // ],
   extends: [
-    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard'
+    'eslint-config-alloy/typescript',
   ],
-  parserOptions: {
-    'ecmaVersion': 6,
-    'sourceType': 'module'
-  },
-  parser: 'typescript-eslint-parser',
   // add your custom rules here
   rules: {
     'space-before-function-paren': 'off',
     // allow async-await
-    'generator-star-spacing': 'off'
+    'generator-star-spacing': 'off',
+    'indent': ['error', 2],
+    'no-param-reassign': 'off'
   }
 }

@@ -13,7 +13,7 @@ export class Event implements EventInterface {
     this._events = {};
   }
 
-  $on (eventName: string, fn: Array<functionObject> | functionObject) {
+  $on (eventName: Array<string> | string, fn: Array<functionObject> | functionObject) {
     if (Array.isArray(eventName)) {
       eventName.forEach(name => this.$on(name, fn));
     } else {
@@ -36,7 +36,7 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $off (eventName: string, fn: Array<functionObject> | functionObject) {
+  $off (eventName: Array<string> | string, fn: Array<functionObject> | functionObject) {
     // 清空所有事件
     if (!arguments.length) {
       this._events = {};

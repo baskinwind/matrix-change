@@ -59,14 +59,12 @@ export function makeMatrixChange (dom: HTMLElement, option: normalObject): expor
       return;
     }
 
-    ma.$emit('changeStart');
     if (option.animate) {
       let aniFlag = 0;
 
       let listenAnimation = () => {
         dom.className = dom.dataset.oldclass;
         if (aniFlag === 1) {
-          ma.$emit('changeEnd');
           dom.removeEventListener('animationend', listenAnimation);
           return;
         }
@@ -84,7 +82,6 @@ export function makeMatrixChange (dom: HTMLElement, option: normalObject): expor
       dom.addEventListener('animationend', listenAnimation);
     } else {
       let listenTransition = () => {
-        ma.$emit('changeEnd');
         dom.dataset.mchange = '';
         dom.className = dom.dataset.oldclass;
         dom.removeEventListener('transitionend', listenTransition);

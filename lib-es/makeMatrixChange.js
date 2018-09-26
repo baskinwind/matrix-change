@@ -49,14 +49,12 @@ export function makeMatrixChange(dom, option) {
       return
     }
 
-    ma.$emit('changeStart')
     if (option.animate) {
       let aniFlag = 0
 
       let listenAnimation = function () {
         dom.className = dom.dataset.oldclass
         if (aniFlag === 1) {
-          ma.$emit('changeEnd')
           dom.removeEventListener('animationend', listenAnimation)
           return
         }
@@ -73,7 +71,6 @@ export function makeMatrixChange(dom, option) {
       dom.addEventListener('animationend', listenAnimation)
     } else {
       let listenTransition = function () {
-        ma.$emit('changeEnd')
         dom.dataset.mchange = ''
         dom.children[0].style.backgroundImage = `url(${image})`
         dom.className = dom.dataset.oldclass

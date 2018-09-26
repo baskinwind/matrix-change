@@ -20,6 +20,10 @@ function getRandom(min, max) {
 
 move.movePoint(mChange.mode[0])
 
+move.matrixChange.$on('changeStart', () => {
+  console.log(123123)
+})
+
 new Vue({
   el: '#option',
   data: {

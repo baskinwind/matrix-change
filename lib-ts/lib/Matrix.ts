@@ -5,9 +5,9 @@ import { Event } from './Event';
 
 export class Matrix extends Event implements MatrixInterface {
 
-  row: number
-  col: number
-  lock: boolean
+  row: number;
+  col: number;
+  lock: boolean;
 
   constructor (row = 7, col = 9) {
     super();

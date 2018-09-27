@@ -1,4 +1,4 @@
-import { eventGroup, EventInterface } from '../types/event';
+import { eventEmitFunType, eventGroupType, EventInterface, eventNameType } from '../types/event';
 import { functionObject } from '../types/normal';
 
 let uid = 0;
@@ -6,14 +6,14 @@ let uid = 0;
 export class Event implements EventInterface {
 
   id: number;
-  _events: eventGroup;
+  _events: eventGroupType;
 
   constructor () {
-    this.id = ++uid;
+    this.id = uid++;
     this._events = {};
   }
 
-  $on (eventName: Array<string> | string, fn: Array<functionObject> | functionObject) {
+  $on (eventName: eventNameType, fn: eventEmitFunType) {
     if (Array.isArray(eventName)) {
       eventName.forEach(name => this.$on(name, fn));
     } else {
@@ -36,7 +36,7 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $off (eventName: Array<string> | string, fn: Array<functionObject> | functionObject) {
+  $off (eventName: eventNameType, fn: eventEmitFunType) {
     // 清空所有事件
     if (!arguments.length) {
       this._events = {};

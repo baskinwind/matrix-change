@@ -1,18 +1,22 @@
 import { functionObject } from './normal';
 
-export type eventGroup = {
-  [propName: string]: Array<functionObject>;
+export type eventNameType = Array<string> | string
+
+export type eventEmitFunType = Array<functionObject> | functionObject
+
+export type eventGroupType = {
+  [propName: string]: Array<functionObject>
 };
 
 export interface EventInterface {
-  id: number;
-  _events: eventGroup;
+  id: number
+  _events: eventGroupType
 
-  $on (eventName: string, fn: Array<() => any> | (() => any)): this;
+  $on (eventName: eventNameType, fn: eventEmitFunType): this
 
-  $once (eventName: string, fn: () => any): this;
+  $once (eventName: string, fn: () => any): this
 
-  $off (eventName?: string, fn?: Array<() => any> | (() => any)): this;
+  $off (eventName?: eventNameType, fn?: eventEmitFunType): this
 
-  $emit (eventName: string, args?: Array<any>): this;
+  $emit (eventName: string, args?: Array<any>): this
 }

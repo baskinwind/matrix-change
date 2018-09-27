@@ -13,10 +13,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [path.resolve(__dirname, 'lib')],
+        include: [path.resolve(__dirname, 'lib-ts')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }

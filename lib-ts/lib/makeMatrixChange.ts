@@ -31,7 +31,7 @@ let defaultOption = {
 };
 
 export function makeMatrixChange (dom: HTMLElement, option: normalObject): exportObj {
-  option = Object.assign(defaultOption, option);
+  option = { ...defaultOption, ...option };
 
   containerLayout(option.nameSpace, option.row, option.col);
   let domMatrix = initDom(dom, option.nameSpace, option.row, option.col);

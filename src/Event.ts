@@ -1,32 +1,31 @@
-import { eventEmitFunType, eventGroupType, EventInterface, eventNameType } from '../types/event';
-import { functionObject } from '../types/normal';
+import {eventGroupType, EventInterface} from './types/event';
+import {functionObject, arrayT} from './types/normal';
 
 let uid = 0;
 
 export class Event implements EventInterface {
-
   id: number;
   _events: eventGroupType;
 
-  constructor () {
+  constructor() {
     this.id = uid++;
     this._events = {};
   }
 
-  $on (eventName: eventNameType, fn: eventEmitFunType) {
+  $on(eventName: arrayT<string>, fn: arrayT<functionObject>) {
     if (Array.isArray(eventName)) {
       eventName.forEach(name => this.$on(name, fn));
     } else {
       if (!Array.isArray(fn)) {
         fn = [fn];
       }
-      (this._events[eventName] || (this._events[eventName] = [])).push(...fn);
+      (this._events[eventName] || (this._events[eventName] = [])).push(...(<[]>fn));
     }
     return this;
   }
 
-  $once (eventName: string, fn: () => any) {
-    let proxyFun: functionObject = (...args: Array<any>) => {
+  $once(eventName: string, fn: () => any) {
+    let proxyFun: functionObject = (...args: []) => {
       this.$off(eventName, proxyFun);
       fn.apply(this, args);
     };
@@ -36,7 +35,7 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $off (eventName: eventNameType, fn: eventEmitFunType) {
+  $off(eventName: arrayT<string>, fn: arrayT<functionObject>) {
     // 清空所有事件
     if (!arguments.length) {
       this._events = {};
@@ -54,7 +53,7 @@ export class Event implements EventInterface {
     }
     // 清空特定事件
     if (!fn) {
-      this._events[eventName] = null;
+      this._events[eventName] = [];
       return this;
     }
     // 取消特定事件的特定处理函数
@@ -64,7 +63,7 @@ export class Event implements EventInterface {
       // 处理一次取消多个的情况
       if (Array.isArray(fn)) {
         fn.forEach(fnc => this.$off(eventName, fnc));
-        return;
+        return this;
       }
       while (i--) {
         cb = cbs[i];
@@ -77,7 +76,7 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $emit (eventName: string, ...args: Array<any>) {
+  $emit(eventName: string, ...args: Array<any>) {
     let cbs = this._events[eventName];
     if (cbs) {
       cbs.forEach(func => func.apply(this, args));

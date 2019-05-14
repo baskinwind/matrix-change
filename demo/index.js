@@ -1,36 +1,114 @@
-var app = document.getElementById('app')
-var urls = ['http://bgcdn.acohome.cn/100965.jpg',
-  'http://bgcdn.acohome.cn/1041418.jpg',
+let app = document.getElementById('app');
+let urls = [
+  'http://bgcdn.acohome.cn/100965.jpg',
   'http://bgcdn.acohome.cn/1501505.jpg',
   'http://bgcdn.acohome.cn/1501655.jpg',
-  'http://bgcdn.acohome.cn/152339.jpg',
   'http://bgcdn.acohome.cn/286477.jpg',
-  'http://bgcdn.acohome.cn/328845.jpg',
-  'http://bgcdn.acohome.cn/328856.jpg']
+  'http://bgcdn.acohome.cn/328845.jpg'
+];
 
-var move = mChange.makeMatrixChange(app, {
+let move = mChange.makeMatrixChange(app, {
   images: urls,
   row: 7,
   col: 9
-})
+});
 
 function getRandom(min, max) {
-  return Math.round(Math.random() * (max - min)) + min
+  return Math.round(Math.random() * (max - min)) + min;
 }
 
-move.movePoint(mChange.mode[0])
-
-move.matrixChange.$on('changeStart', () => {
-  console.log(123123)
-})
+move.movePoint(mChange.mode[0]);
 
 new Vue({
   el: '#option',
   data: {
     inSelect: 'rollIn',
-    inList: ['flash', 'rubberBand', 'shake', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'flipInX', 'flipInY', 'lightSpeedIn', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'rollIn', 'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'slideInDown', 'slideInLeft', 'slideInRight', 'slideInUp'],
+    inList: [
+      'flash',
+      'rubberBand',
+      'shake',
+      'headShake',
+      'swing',
+      'tada',
+      'wobble',
+      'jello',
+      'bounceIn',
+      'bounceInDown',
+      'bounceInLeft',
+      'bounceInRight',
+      'bounceInUp',
+      'fadeIn',
+      'fadeInDown',
+      'fadeInDownBig',
+      'fadeInLeft',
+      'fadeInLeftBig',
+      'fadeInRight',
+      'fadeInRightBig',
+      'fadeInUp',
+      'fadeInUpBig',
+      'flipInX',
+      'flipInY',
+      'lightSpeedIn',
+      'rotateIn',
+      'rotateInDownLeft',
+      'rotateInDownRight',
+      'rotateInUpLeft',
+      'rotateInUpRight',
+      'rollIn',
+      'zoomIn',
+      'zoomInDown',
+      'zoomInLeft',
+      'zoomInRight',
+      'zoomInUp',
+      'slideInDown',
+      'slideInLeft',
+      'slideInRight',
+      'slideInUp'
+    ],
     outSelect: 'hinge',
-    outList: ['flash', 'rubberBand', 'shake', 'headShake', 'swing', 'tada', 'wobble', 'jello', 'bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'flipOutX', 'flipOutY', 'lightSpeedOut', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight', 'hinge', 'rollOut', 'zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight', 'slideOutUp']
+    outList: [
+      'flash',
+      'rubberBand',
+      'shake',
+      'headShake',
+      'swing',
+      'tada',
+      'wobble',
+      'jello',
+      'bounceOut',
+      'bounceOutDown',
+      'bounceOutLeft',
+      'bounceOutRight',
+      'bounceOutUp',
+      'fadeOut',
+      'fadeOutDown',
+      'fadeOutDownBig',
+      'fadeOutLeft',
+      'fadeOutLeftBig',
+      'fadeOutRight',
+      'fadeOutRightBig',
+      'fadeOutUp',
+      'fadeOutUpBig',
+      'flipOutX',
+      'flipOutY',
+      'lightSpeedOut',
+      'rotateOut',
+      'rotateOutDownLeft',
+      'rotateOutDownRight',
+      'rotateOutUpLeft',
+      'rotateOutUpRight',
+      'hinge',
+      'rollOut',
+      'zoomOut',
+      'zoomOutDown',
+      'zoomOutLeft',
+      'zoomOutRight',
+      'zoomOutUp',
+      'slideOutDown',
+      'slideOutLeft',
+      'slideOutRight',
+      'slideOutUp'
+    ]
   },
   methods: {
     start() {
@@ -38,7 +116,7 @@ new Vue({
         animate: true,
         classNameIn: 'animated ' + this.inSelect,
         classNameOut: 'animated ' + this.outSelect
-      })
+      });
     }
   }
-})
+});

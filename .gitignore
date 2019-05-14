@@ -1,11 +1,8 @@
 .DS_Store
 node_modules
 *.log
-explorations
 TODOs.md
-dist/*.gz
-dist/*.map
-coverage
-RELEASE_NOTE*.md
+dist/
+lib/
 .vscode
 .idea

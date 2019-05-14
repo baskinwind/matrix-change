@@ -1,5 +1,5 @@
-import { MatrixInterface } from '../types/matrix';
-import { modeType } from '../types/mode';
+import { MatrixInterface } from './types/matrix';
+import { modeType } from './types/mode';
 
 import { Event } from './Event';
 
@@ -9,14 +9,14 @@ export class Matrix extends Event implements MatrixInterface {
   col: number;
   lock: boolean;
 
-  constructor (row = 7, col = 9) {
+  constructor(row = 7, col = 9) {
     super();
     this.row = row;
     this.col = col;
     this.lock = false;
   }
 
-  movePoint (mode: modeType, option = {}) {
+  movePoint(mode: modeType, option: object = {}) {
     if (this.lock === true) {
       return;
     }

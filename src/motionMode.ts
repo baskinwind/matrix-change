@@ -1,211 +1,211 @@
-import { modeType } from '../types/mode';
+import { modeType } from './types/mode';
 
 export let mode: Array<modeType> = [{
-  interval: '140',
+  interval: 140,
   duration: '1000',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = Math.ceil(Math.random() * Math.ceil((row + col) / 2) + 2);
     this.baseNum = this.num;
   },
-  check (i, j) {
+  check(i, j) {
     return (i * this.col + j) % (this.baseNum + 1) === this.num;
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return this.num === -1;
   }
 }, {
-  interval: '140',
+  interval: 140,
   duration: '1000',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = Math.ceil(Math.random() * Math.max((row + col) / 2) + 2);
     this.baseNum = this.num;
   },
-  check (i, j) {
+  check(i, j) {
     return (i + j * this.row) % (this.baseNum + 1) === this.num;
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return this.num === -1;
   }
 }, {
-  interval: '140',
+  interval: 140,
   duration: '1000',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = Math.ceil(Math.random() * Math.ceil((row + col) / 2) + 2);
     this.baseNum = this.num;
   },
-  check (i, j) {
+  check(i, j) {
     return (i * this.col + j) % (this.baseNum + 1) === this.baseNum - this.num;
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return this.num === -1;
   }
 }, {
-  interval: '140',
+  interval: 140,
   duration: '1000',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = Math.ceil(Math.random() * Math.max((row + col) / 2) + 2);
     this.baseNum = this.num;
   },
-  check (i, j) {
+  check(i, j) {
     return (i + j * this.row) % (this.baseNum + 1) === this.baseNum - this.num;
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return this.num === -1;
   }
 }, {
-  interval: '140',
+  interval: 140,
   duration: '1000',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return i + j === this.num;
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     return this.col + this.row + 1 === this.num;
   }
 }, {
-  interval: '140',
+  interval: 140,
   duration: '1000',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = this.row - 1;
   },
-  check (i, j) {
+  check(i, j) {
     return i - j === this.num;
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return -this.col === this.num;
   }
 }, {
-  interval: '140',
+  interval: 140,
   duration: '1000',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 1 - this.col;
   },
-  check (i, j) {
+  check(i, j) {
     return i - j === this.num;
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     return this.row === this.num;
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return i === this.num;
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     return this.row === this.num;
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return j === this.num;
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     return this.col === this.num;
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = this.row - 1;
   },
-  check (i, j) {
+  check(i, j) {
     return i === this.num;
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return this.num === -1;
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = this.col - 1;
   },
-  check (i, j) {
+  check(i, j) {
     return j === this.num;
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return this.num === -1;
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return (i === this.num && j >= this.num) || (j === this.num && i >= this.num);
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     if (this.row > this.col) {
       return this.row - 1 === this.num;
     } else {
@@ -213,21 +213,21 @@ export let mode: Array<modeType> = [{
     }
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return (this.row - i - 1 === this.num && this.col - j - 1 >= this.num) ||
       (this.col - j - 1 === this.num && this.row - i - 1 >= this.num);
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     if (this.row > this.col) {
       return this.num === this.row - 1;
     } else {
@@ -235,20 +235,20 @@ export let mode: Array<modeType> = [{
     }
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return (i === this.num && this.col - j - 1 >= this.num) || (this.col - j - 1 === this.num && i >= this.num);
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     if (this.row > this.col) {
       return this.row - 1 === this.num;
     } else {
@@ -256,20 +256,20 @@ export let mode: Array<modeType> = [{
     }
   }
 }, {
-  interval: '200',
+  interval: 200,
   duration: '1200',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return (this.row - i - 1 === this.num && j >= this.num) || (j === this.num && this.row - i - 1 >= this.num);
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     if (this.row > this.col) {
       return this.row - 1 === this.num;
     } else {
@@ -277,23 +277,23 @@ export let mode: Array<modeType> = [{
     }
   }
 }, {
-  interval: '300',
+  interval: 300,
   duration: '1400',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
   },
-  check (i, j) {
+  check(i, j) {
     return (i === this.num && j >= this.num && this.col - j - 1 >= this.num) ||
       (j === this.num && i >= this.num && this.row - i - 1 >= this.num) ||
       (this.row - i - 1 === this.num && j >= this.num && this.col - j - 1 >= this.num) ||
       (this.col - j - 1 === this.num && i >= this.num && this.row - i - 1 >= this.num);
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     if (this.row > this.col) {
       return Math.ceil(this.col / 2) === this.num;
     } else {
@@ -301,9 +301,9 @@ export let mode: Array<modeType> = [{
     }
   }
 }, {
-  interval: '320',
+  interval: 320,
   duration: '1800',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = 0;
@@ -312,38 +312,38 @@ export let mode: Array<modeType> = [{
       y: (this.col - 1) / 2
     };
   },
-  check (i, j) {
+  check(i, j) {
     let dis = Math.abs(i - this.center.x) + Math.abs(j - this.center.y);
     return (dis < this.num) && (dis >= this.num - 1);
   },
-  next () {
+  next() {
     this.num++;
   },
-  end () {
+  end() {
     return this.num - 1 > this.center.x + this.center.y;
   }
 }, {
-  interval: '300',
+  interval: 300,
   duration: '1600',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.num = this.row > this.col ? Math.ceil((this.col - 1) / 2) : Math.ceil((this.row - 1) / 2);
   },
-  check (i, j) {
+  check(i, j) {
     return ((i === this.num || this.row - 1 - i === this.num) && j >= this.num && this.col - 1 - j >= this.num) ||
       ((j === this.num || this.col - 1 - j === this.num) && i >= this.num && this.row - 1 - i >= this.num);
   },
-  next () {
+  next() {
     this.num--;
   },
-  end () {
+  end() {
     return this.num === -1;
   }
 }, {
-  interval: '50',
+  interval: 50,
   duration: '600',
-  init (row, col) {
+  init(row, col) {
     this.row = row;
     this.col = col;
     this.point = [
@@ -360,10 +360,10 @@ export let mode: Array<modeType> = [{
     this.jNow = 0;
     this.allNum = this.col * this.row;
   },
-  check (i, j) {
+  check(i, j) {
     return i === this.iNow && j === this.jNow;
   },
-  next () {
+  next() {
     this.allNum--;
     if (this.direction === 'row' && this.jNow < this.point[1][1] && this.positive) {
       this.jNow++;
@@ -395,7 +395,7 @@ export let mode: Array<modeType> = [{
       }
     }
   },
-  end () {
+  end() {
     return this.allNum === 0;
   }
 }];

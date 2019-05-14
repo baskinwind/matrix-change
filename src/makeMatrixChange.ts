@@ -1,39 +1,27 @@
-import { modeType } from '../types/mode';
-import { MatrixInterface } from '../types/matrix';
-import { normalObject, pointType, optionType } from '../types/normal';
+import {modeType} from './types/mode';
+import {matrixOption, MatrixInterface, hitPointFunParams, hitPointOption, matrixSureOption} from './types/matrix';
 
-type exportObj = {
-  movePoint: (mode: modeType, option: optionType) => void;
-  changeImages: (images: Array<string>) => void;
+type returnType = {
+  movePoint(mode: modeType, option: hitPointOption): void;
+  changeImages(images: Array<string>): void;
   matrixChange: MatrixInterface;
 };
 
-import { Matrix } from './Matrix';
-import { containerLayout, initDom } from './initHtml';
+import {Matrix} from './Matrix';
+import {initContainerLayout, initDom} from './initHtml';
+import {getRandom, getRandomStr} from "./util";
 
-function getRandom (min: number, max: number): number {
-  return Math.round(Math.random() * (max - min)) + min;
-}
-
-function getRandomStr (num: number): string {
-  let str = '';
-  let arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  for (let i = 0; i < num; i++) {
-    str += arr[getRandom(0, arr.length)];
-  }
-  return str;
-}
-
-let defaultOption = {
+let defaultOption: matrixSureOption = {
   nameSpace: getRandomStr(8),
   row: 7,
-  col: 9
+  col: 9,
+  images: []
 };
 
-export function makeMatrixChange (dom: HTMLElement, option: normalObject): exportObj {
-  option = { ...defaultOption, ...option };
+export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): returnType {
+  let option = <matrixSureOption>({...defaultOption, ...optionIn});
 
-  containerLayout(option.nameSpace, option.row, option.col);
+  initContainerLayout(option.nameSpace, option.row, option.col);
   let domMatrix = initDom(dom, option.nameSpace, option.row, option.col);
 
   let ma = new Matrix(option.row, option.col);
@@ -49,22 +37,26 @@ export function makeMatrixChange (dom: HTMLElement, option: normalObject): expor
     image = option.images[getRandom(0, option.images.length - 1)];
   });
 
-  ma.$on('hitPoint', ({ point, mode, option }: { point: pointType, mode: modeType, option: optionType }) => {
+  ma.$on('hitPoint', ({point, mode, option}: hitPointFunParams) => {
     image = option.image ? option.image : image;
     let className = option.className ? option.className : 'defaultChange';
     let classNameIn = '';
 
     let dom = domMatrix[point.x][point.y];
-    if (dom.dataset.change) {
+    if (dom.dataset.mchange) {
       return;
     }
 
     if (option.animate) {
+      className = <string>option.classNameOut;
+      classNameIn = <string>(option.classNameIn ? option.classNameIn : option.classNameOut);
+
       let aniFlag = 0;
 
       let listenAnimation = () => {
-        dom.className = dom.dataset.oldclass;
+        dom.className = <string>dom.dataset.oldclass;
         if (aniFlag === 1) {
+          dom.dataset.mchange = '';
           dom.removeEventListener('animationend', listenAnimation);
           return;
         }
@@ -72,20 +64,17 @@ export function makeMatrixChange (dom: HTMLElement, option: normalObject): expor
           dom.className = `${oldClass} ${classNameIn}`;
         });
         aniFlag = 1;
-        let child = dom.children[0] as HTMLElement;
+        let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;
       };
-
-      className = option.classNameOut;
-      classNameIn = option.classNameIn ? option.classNameIn : option.classNameOut;
 
       dom.addEventListener('animationend', listenAnimation);
     } else {
       let listenTransition = () => {
         dom.dataset.mchange = '';
-        dom.className = dom.dataset.oldclass;
+        dom.className = <string>dom.dataset.oldclass;
         dom.removeEventListener('transitionend', listenTransition);
-        let child = dom.children[0] as HTMLElement;
+        let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;
       };
 
@@ -100,7 +89,7 @@ export function makeMatrixChange (dom: HTMLElement, option: normalObject): expor
 
   return {
     movePoint: ma.movePoint.bind(ma),
-    changeImages (images) {
+    changeImages(images) {
       option.images = images;
     },
     matrixChange: ma

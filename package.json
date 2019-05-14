@@ -2,7 +2,11 @@
   "name": "matrixchange",
   "version": "1.4.1",
   "description": "矩阵运动",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "dist"
+  ],
   "author": "aco <wwsxuan@163.com>",
   "bugs": {
     "url": "https://github.com/acccco/matrixChange/issues"
@@ -19,31 +23,17 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "lint-es": "eslint --ext .js lib-es --fix",
-    "lint-ts": "eslint --ext .ts lib-ts --fix"
+    "lint": "eslint src --ext .ts"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
-    "babel-eslint": "^9.0.0",
-    "babel-loader": "^8.0.2",
-    "eslint": "^5.1.0",
-    "eslint-config-alloy": "^1.4.2",
-    "eslint-config-standard": "^12.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^4.0.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-typescript": "^0.12.0",
-    "ts-loader": "^5.1.0",
-    "typescript": "^3.0.3",
-    "typescript-eslint-parser": "^18.0.0",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^3.1.0"
-  },
-  "dependencies": {}
+    "eslint-loader": "^2.1.2",
+    "ts-loader": "^6.0.0",
+    "typescript": "^3.4.5",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
 }

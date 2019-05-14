@@ -1,4 +1,4 @@
-/build/
-/demo/
 /dist/
+/demo/
+/lib/
 /*.js

@@ -6,3 +6,4 @@ dist/
 lib/
 .vscode
 .idea
+test/

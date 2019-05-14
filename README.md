@@ -29,7 +29,7 @@ yarn add matrixchange
 let mChange = require('matrixchange')
 // ...
 // or
-import matrixChange from 'matrixchange'
+import * as mChange from 'matrixchange'
 // ...
 ```
 

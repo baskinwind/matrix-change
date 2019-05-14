@@ -1,7 +1,7 @@
-import { MatrixInterface } from './types/matrix';
-import { modeType } from './types/mode';
+import {MatrixInterface} from './types/matrix';
+import {modeType} from './types/mode';
 
-import { Event } from './Event';
+import {Event} from './Event';
 
 export class Matrix extends Event implements MatrixInterface {
 

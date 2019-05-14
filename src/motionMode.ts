@@ -1,4 +1,4 @@
-import { modeType } from './types/mode';
+import {modeType} from './types/mode';
 
 export let mode: Array<modeType> = [{
   interval: 140,

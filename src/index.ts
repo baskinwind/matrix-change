@@ -1,4 +1,2 @@
-export * from './Matrix';
-export * from './initHtml';
-export * from './motionMode';
-export * from './makeMatrixChange';
+export {mode} from './motionMode';
+export {makeMatrixChange} from './makeMatrixChange';

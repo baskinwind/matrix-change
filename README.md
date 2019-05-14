@@ -45,18 +45,18 @@ import matrixChange from 'matrixchange'
 
 ```
 var app = document.getElementById('app')
-var urls = ['http://7xse2z.com1.z0.glb.clouddn.com/257084.jpg',
-  'http://7xse2z.com1.z0.glb.clouddn.com/257453.jpg',
-  'http://7xse2z.com1.z0.glb.clouddn.com/285848.jpg',
-  'http://7xse2z.com1.z0.glb.clouddn.com/3455%20%281%29.jpg']
+var urls = [
+  'http://bgcdn.acohome.cn/100965.jpg',
+  'http://bgcdn.acohome.cn/1501505.jpg',
+  'http://bgcdn.acohome.cn/1501655.jpg'
+];
 
+// 该方法返回一个对象
 var move = mChange.makeMatrixChange(app, {
   images: urls,
   row: 7,
   col: 9
 })
-// 该方法返回一个对象
-
 
 // 使用默认的动画效果
 move.movePoint(mChange.mode[0])
@@ -89,7 +89,7 @@ move.movePoint(mChange.mode[0], {
 `mChange` 对象属性/方法：
 
 - mode/Array:                 提供一组运动形式，目前有 `19` 种
-- makeMatrixChange/Function:  用于生成动画
+- makeMatrixChange/Function:  用于初始化动画
 
 ## makeMatrixChange 方法说明
 
@@ -124,7 +124,7 @@ move.movePoint(mChange.mode[0], {
 
 ```
 {
-  interval: '140',
+  interval: 140,
   duration: '1000',
   init: function (row, col) {
     this.row = row
@@ -143,8 +143,8 @@ move.movePoint(mChange.mode[0], {
 }
 ```
 
-- `init` 函数参数即为 `Matrix` 实例初始化的行列信息
-- `check` 函数参数即为每个二维矩阵的点，从 `0` 开始，当 `check` 返回 `true` 时，就会触发 `hitPoint` 事件
+- `init`    函数参数即为 `Matrix` 实例初始化的行列信息
+- `check`   函数参数即为每个二维矩阵的点，从 `0` 开始，当 `check` 返回 `true` 代表该点对于的块需要运动
 
 ## 其他
 

@@ -1,5 +1,5 @@
 // 如果不想用 js 完成 style 的初始化，可以使用 matrixLayout.scss 效果一样
-export function initContainerLayout(nameSpace: string | undefined, row: number, col: number): void {
+export function initContainerLayout(nameSpace: string, row: number, col: number): void {
   let wrapSizeStyle = [
     `width:${100 / col}%;`,
     `height:${100 / row}%;`,
@@ -49,7 +49,7 @@ export function initContainerLayout(nameSpace: string | undefined, row: number, 
   document.head.appendChild(styleDom);
 }
 
-export function initDom(dom: HTMLElement, nameSpace: string | undefined, row: number, col: number): Array<Array<HTMLElement>> {
+export function initDom(dom: HTMLElement, nameSpace: string, row: number, col: number): Array<Array<HTMLElement>> {
   let fragment = document.createDocumentFragment();
   let domMatrix = [];
   for (let i = 1; i <= row; i++) {
@@ -57,6 +57,7 @@ export function initDom(dom: HTMLElement, nameSpace: string | undefined, row: nu
     for (let j = 1; j <= col; j++) {
       let dom = document.createElement('div');
       dom.className = `animation-item item-${i}-${j}`;
+      dom.dataset.oldclass = dom.className;
       let domInner = document.createElement('div');
       domInner.className = `child`;
       dom.appendChild(domInner);

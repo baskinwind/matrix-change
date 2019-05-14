@@ -1,5 +1,5 @@
 import {modeType} from './types/mode';
-import {matrixOption, MatrixInterface, hitPointFunParams, hitPointOption, matrixSureOption} from './types/matrix';
+import {matrixOption, MatrixInterface, hitPointFunParams, hitPointOption} from './types/matrix';
 
 type returnType = {
   movePoint(mode: modeType, option: hitPointOption): void;
@@ -11,7 +11,7 @@ import {Matrix} from './Matrix';
 import {initContainerLayout, initDom} from './initHtml';
 import {getRandom, getRandomStr} from "./util";
 
-let defaultOption: matrixSureOption = {
+let defaultOption = {
   nameSpace: getRandomStr(8),
   row: 7,
   col: 9,
@@ -19,19 +19,13 @@ let defaultOption: matrixSureOption = {
 };
 
 export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): returnType {
-  let option = <matrixSureOption>({...defaultOption, ...optionIn});
+  let option = {...defaultOption, ...optionIn};
 
   initContainerLayout(option.nameSpace, option.row, option.col);
   let domMatrix = initDom(dom, option.nameSpace, option.row, option.col);
 
   let ma = new Matrix(option.row, option.col);
   let image = option.images[0];
-
-  domMatrix.forEach(domArray => {
-    domArray.forEach(dom => {
-      dom.dataset.oldclass = dom.className;
-    });
-  });
 
   ma.$on('changeStart', () => {
     image = option.images[getRandom(0, option.images.length - 1)];

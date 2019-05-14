@@ -1,18 +1,11 @@
-import { EventInterface } from './event';
-import { modeType } from './mode';
+import {EventInterface} from './event';
+import {modeType} from './mode';
 
 export type matrixOption = {
   images: Array<string>;
   nameSpace?: string;
   row?: number;
   col?: number;
-};
-
-export type matrixSureOption = {
-  images: Array<string>;
-  nameSpace: string;
-  row: number;
-  col: number;
 };
 
 export interface MatrixInterface extends EventInterface {

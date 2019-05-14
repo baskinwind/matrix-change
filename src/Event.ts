@@ -1,5 +1,5 @@
 import {eventGroupType, EventInterface} from './types/event';
-import {functionObject, arrayT} from './types/normal';
+import {arrayT} from './types/normal';
 
 let uid = 0;
 
@@ -12,7 +12,7 @@ export class Event implements EventInterface {
     this._events = {};
   }
 
-  $on(eventName: arrayT<string>, fn: arrayT<functionObject>) {
+  $on(eventName: arrayT<string>, fn: arrayT<Function>): this {
     if (Array.isArray(eventName)) {
       eventName.forEach(name => this.$on(name, fn));
     } else {
@@ -24,18 +24,19 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $once(eventName: string, fn: () => any) {
-    let proxyFun: functionObject = (...args: []) => {
+  $once(eventName: string, fn: Function) {
+    let proxyFun = (...args: []) => {
       this.$off(eventName, proxyFun);
       fn.apply(this, args);
     };
+    // @ts-ignore
     proxyFun.fn = fn;
 
     this.$on(eventName, proxyFun);
     return this;
   }
 
-  $off(eventName: arrayT<string>, fn: arrayT<functionObject>) {
+  $off(eventName: arrayT<string>, fn: arrayT<Function>) {
     // 清空所有事件
     if (!arguments.length) {
       this._events = {};
@@ -67,6 +68,7 @@ export class Event implements EventInterface {
       }
       while (i--) {
         cb = cbs[i];
+        // @ts-ignore
         if (cb === fn || cb.fn === fn) {
           cbs.splice(i, 1);
           break;
@@ -79,7 +81,7 @@ export class Event implements EventInterface {
   $emit(eventName: string, ...args: Array<any>) {
     let cbs = this._events[eventName];
     if (cbs) {
-      cbs.forEach(func => func.apply(this, args));
+      cbs.forEach(func => func.apply(this, <[]>args));
     }
     return this;
   }

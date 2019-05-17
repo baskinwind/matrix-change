@@ -1,5 +1,4 @@
 import {eventGroupType, EventInterface} from './types/event';
-import {arrayT} from './types/normal';
 
 let uid = 0;
 
@@ -12,15 +11,11 @@ export class Event implements EventInterface {
     this._events = {};
   }
 
-  $on(eventName: arrayT<string>, fn: arrayT<Function>): this {
-    if (Array.isArray(eventName)) {
-      eventName.forEach(name => this.$on(name, fn));
-    } else {
-      if (!Array.isArray(fn)) {
-        fn = [fn];
-      }
-      (this._events[eventName] || (this._events[eventName] = [])).push(...(<[]>fn));
+  $on(eventName: string, fn: Function): this {
+    if (!this._events[eventName]) {
+      this._events[eventName] = []
     }
+    this._events[eventName].push(fn);
     return this;
   }
 
@@ -36,15 +31,10 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $off(eventName: arrayT<string>, fn: arrayT<Function>) {
+  $off(eventName: string, fn: Function) {
     // 清空所有事件
     if (!arguments.length) {
       this._events = {};
-      return this;
-    }
-    // 清空多个事件
-    if (Array.isArray(eventName)) {
-      eventName.forEach(name => this.$off(name, fn));
       return this;
     }
     // 若没有事件对应的函数列表则不用处理
@@ -61,11 +51,6 @@ export class Event implements EventInterface {
     if (fn) {
       let cb;
       let i = cbs.length;
-      // 处理一次取消多个的情况
-      if (Array.isArray(fn)) {
-        fn.forEach(fnc => this.$off(eventName, fnc));
-        return this;
-      }
       while (i--) {
         cb = cbs[i];
         // @ts-ignore

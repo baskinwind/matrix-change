@@ -1,5 +1,5 @@
-import {MatrixInterface} from './types/matrix';
-import {modeType} from './types/mode';
+import {MatrixInterface} from './type/matrix';
+import {modeType} from './type/mode';
 
 import {Event} from './Event';
 

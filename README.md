@@ -1,7 +1,7 @@
 # matrixChange
 
 <p>
-  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.4.1-blue.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.4.3-blue.svg" alt="Version"></a>
   <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
 </p>
 
@@ -27,9 +27,10 @@ yarn add matrixchange
 
 ```
 let mChange = require('matrixchange')
-// ...
 // or
 import * as mChange from 'matrixchange'
+// or
+import {makeMatrixChange, mode} from 'matrixchange'
 // ...
 ```
 
@@ -37,7 +38,7 @@ import * as mChange from 'matrixchange'
 
 ## demo
 
-[Live Demo](http://acohome.cn/demo/matrix/index.html)
+[Demo](http://acohome.cn/demo/matrix/index.html)
 
 [jsfiddle](https://jsfiddle.net/acccco/pgff8k5j/)
 
@@ -98,7 +99,7 @@ move.movePoint(mChange.mode[0], {
 - 参一: 需要挂载的节点
 - 参二: `option` 一些配置信息
 
-#### options
+#### option
 
 - row:        需要生成的行数
 - col:        需要生成的列数
@@ -120,7 +121,7 @@ move.movePoint(mChange.mode[0], {
 - next/Function:    每次运动后对于下次运动的配置
 - end/Function:     用于判断运动是否结束，每次运动后都会调用
 
-比如 `mChange.mode[4]` 的具体内容：
+如 `mChange.mode[4]` 的具体内容：
 
 ```
 {
@@ -143,7 +144,9 @@ move.movePoint(mChange.mode[0], {
 }
 ```
 
-- `init`    函数参数即为 `Matrix` 实例初始化的行列信息
+代表矩阵从左上到右下，按照每一条线下进行运动。
+
+- `init`    函数参数即为初始化的行列信息
 - `check`   函数参数即为每个二维矩阵的点，从 `0` 开始，当 `check` 返回 `true` 代表该点对于的块需要运动
 
 ## 其他

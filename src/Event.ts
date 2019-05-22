@@ -1,4 +1,4 @@
-import {eventGroupType, EventInterface} from './types/event';
+import {eventGroupType, EventInterface} from './type/event';
 
 let uid = 0;
 

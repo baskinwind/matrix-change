@@ -5,8 +5,8 @@ const ts = require('gulp-typescript');
 const tsProject = ts.createProject('tsconfig.json');
 
 function copyTypes() {
-  return gulp.src('src/types/*')
-    .pipe(gulp.dest('lib/types'));
+  return gulp.src('src/type/*')
+    .pipe(gulp.dest('lib/type'));
 }
 
 function clean() {

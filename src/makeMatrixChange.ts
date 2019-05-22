@@ -1,5 +1,5 @@
-import {modeType} from './types/mode';
-import {matrixOption, MatrixInterface, hitPointFunParams, hitPointOption} from './types/matrix';
+import {modeType} from './type/mode';
+import {matrixOption, MatrixInterface, hitPointFunParams, hitPointOption} from './type/matrix';
 
 type returnType = {
   movePoint(mode: modeType, option: hitPointOption): void;

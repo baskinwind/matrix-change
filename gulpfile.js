@@ -10,7 +10,7 @@ function copyTypes() {
 }
 
 function clean() {
-  return del(['dist', 'lib']);
+  return del(['lib']);
 }
 
 function compileTS() {

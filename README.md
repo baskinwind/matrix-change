@@ -36,6 +36,8 @@ import {makeMatrixChange, mode} from 'matrixchange'
 
 ## demo
 
+![gif](http://blogcdn.acohome.cn/change.gif)
+
 [Demo](http://acohome.cn/demo/matrix/index.html)
 
 [jsfiddle](https://jsfiddle.net/acccco/pgff8k5j/)

@@ -34,7 +34,7 @@ export function initContainerLayout(nameSpace: string, row: number, col: number)
     }
   }
 
-  let containStyle = ['position:relative'].join('');
+  let containStyle = ['position:relative;', 'overflow: hidden;'].join('');
 
   let matrixChange = [
     `.${nameSpace}{${containStyle}}`,

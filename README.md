@@ -5,8 +5,6 @@
   <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
 </p>
 
-## 使用
-
 浏览器端
 
 ```
@@ -44,7 +42,7 @@ import {makeMatrixChange, mode} from 'matrixchange'
 
 ## 使用
 
-```
+```javascript
 var app = document.getElementById('app')
 var urls = [
   'http://bgcdn.acohome.cn/100965.jpg',
@@ -68,7 +66,7 @@ move.movePoint(mChange.mode[0], {
 })
 
 // 使用 animation 动画，比如配合 animation.css 动画库
-// animation 需要提供两个类名，进场动画和出场动画，同时需要标志这个是 animation 动画
+// animation 需要提供两个类名，进场动画和出场动画，同时需要标记这个是 animation 动画
 move.movePoint(mChange.mode[0], {
     animate: true,
     classNameIn: 'animated flipInX',
@@ -144,7 +142,7 @@ move.movePoint(mChange.mode[0], {
 }
 ```
 
-代表矩阵从左上到右下，按照每一条线下进行运动。
+代表矩阵从左上到右下，按照每一条斜线进行运动。
 
 - `init`    函数参数即为初始化的行列信息
 - `check`   函数参数即为每个二维矩阵的点，从 `0` 开始，当 `check` 返回 `true` 代表该点对于的块需要运动

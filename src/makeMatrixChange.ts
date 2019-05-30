@@ -51,7 +51,12 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
           dom.removeEventListener('animationend', listenAnimation);
           return;
         }
-        dom.className = `${baseClass} ${classNameIn}`;
+        // 防止因为出场动画和入场动画一样而导致没有出场动画
+        // 出场动画在下一个 event loop 内设置
+        dom.className = baseClass;
+        setTimeout(() => {
+          dom.className = `${baseClass} ${classNameIn}`;
+        });
         dom.dataset.mchange = '2';
         let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;

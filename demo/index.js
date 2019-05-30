@@ -22,7 +22,7 @@ move.movePoint(mChange.mode[0]);
 new Vue({
   el: '#option',
   data: {
-    inSelect: 'rollIn',
+    inSelect: 'flash',
     inList: [
       'flash',
       'rubberBand',
@@ -65,7 +65,7 @@ new Vue({
       'slideInRight',
       'slideInUp'
     ],
-    outSelect: 'hinge',
+    outSelect: 'flash',
     outList: [
       'flash',
       'rubberBand',

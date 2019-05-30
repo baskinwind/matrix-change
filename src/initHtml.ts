@@ -57,7 +57,7 @@ export function initDom(dom: HTMLElement, nameSpace: string, row: number, col: n
     for (let j = 1; j <= col; j++) {
       let dom = document.createElement('div');
       dom.className = `animation-item item-${i}-${j}`;
-      dom.dataset.oldclass = dom.className;
+      dom.dataset.baseclass = dom.className;
       let domInner = document.createElement('div');
       domInner.className = `child`;
       dom.appendChild(domInner);

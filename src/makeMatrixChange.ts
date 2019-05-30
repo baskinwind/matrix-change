@@ -33,31 +33,26 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
 
   ma.$on('hitPoint', ({point, mode, option}: hitPointFunParams) => {
     image = option.image ? option.image : image;
-    let className = option.className ? option.className : 'defaultChange';
-    let classNameIn = '';
+    let classNameIn = option.animate ? option.classNameIn : '';
+    let classNameOut = option.animate ? option.classNameOut : option.className ? option.className : 'defaultChange';
 
     let dom = domMatrix[point.x][point.y];
     if (dom.dataset.mchange) {
       return;
     }
 
+    let baseClass = <string>dom.dataset.baseclass;
+
     if (option.animate) {
-      className = <string>option.classNameOut;
-      classNameIn = <string>(option.classNameIn ? option.classNameIn : option.classNameOut);
-
-      let aniFlag = 0;
-
       let listenAnimation = () => {
-        dom.className = <string>dom.dataset.oldclass;
-        if (aniFlag === 1) {
+        if (dom.dataset.mchange === '2') {
           dom.dataset.mchange = '';
+          dom.className = baseClass;
           dom.removeEventListener('animationend', listenAnimation);
           return;
         }
-        setTimeout(() => {
-          dom.className = `${oldClass} ${classNameIn}`;
-        });
-        aniFlag = 1;
+        dom.className = `${baseClass} ${classNameIn}`;
+        dom.dataset.mchange = '2';
         let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;
       };
@@ -66,7 +61,7 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
     } else {
       let listenTransition = () => {
         dom.dataset.mchange = '';
-        dom.className = <string>dom.dataset.oldclass;
+        dom.className = baseClass;
         dom.removeEventListener('transitionend', listenTransition);
         let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;
@@ -75,8 +70,7 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
       dom.addEventListener('transitionend', listenTransition);
     }
 
-    let oldClass = dom.dataset.oldclass;
-    dom.className = `${oldClass} ${className}`;
+    dom.className = `${baseClass} ${classNameOut}`;
     dom.dataset.mchange = '1';
     dom.style.transition = mode.duration / 1000 + 's';
   });

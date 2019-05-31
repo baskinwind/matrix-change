@@ -25,12 +25,12 @@ export function initContainerLayout(nameSpace: string, row: number, col: number)
         `top:${(100 / row) * (i - 1)}%;`,
         `left:${(100 / col) * (j - 1)}%;`
       ].join('');
-      posiStyle.push(`.${nameSpace} .item-${i}-${j}{${wrapStyle}}`);
+      posiStyle.push(`.${nameSpace} .mc-item-${i}-${j}{${wrapStyle}}`);
       let childStyle = [
         `top:${-100 * (i - 1)}%;`,
         `left:${-100 * (j - 1)}%;`
       ].join('');
-      posiStyle.push(`.${nameSpace} .item-${i}-${j} .child{${childStyle}}`);
+      posiStyle.push(`.${nameSpace} .mc-item-${i}-${j} .mc-child{${childStyle}}`);
     }
   }
 
@@ -39,8 +39,9 @@ export function initContainerLayout(nameSpace: string, row: number, col: number)
   let matrixChange = [
     `.${nameSpace}{${containStyle}}`,
     `.${nameSpace} .defaultChange{transform: scale(0);border-radius: 50%;}`,
-    `.${nameSpace} .animation-item{${wrapSizeStyle}}`,
-    `.${nameSpace} .animation-item .child{${childSizeStyle}}`,
+    `.${nameSpace} .mc-animation-item{${wrapSizeStyle}}`,
+    `.${nameSpace} .mc-animation-item .mc-child{${childSizeStyle}}`,
+    `.${nameSpace} .mc-hidden{opacity:0}`,
     posiStyle.join('')
   ].join('');
 
@@ -56,10 +57,10 @@ export function initDom(dom: HTMLElement, nameSpace: string, row: number, col: n
     let rowDom = [];
     for (let j = 1; j <= col; j++) {
       let dom = document.createElement('div');
-      dom.className = `animation-item item-${i}-${j}`;
+      dom.className = `mc-animation-item mc-item-${i}-${j}`;
       dom.dataset.baseclass = dom.className;
       let domInner = document.createElement('div');
-      domInner.className = `child`;
+      domInner.className = `mc-child`;
       dom.appendChild(domInner);
       fragment.appendChild(dom);
       rowDom.push(dom);

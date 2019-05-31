@@ -4,7 +4,7 @@
   .#{$nameSpace} {
     position: relative;
 
-    .animation-item {
+    .mc-animation-item {
       width: 100%/$col;
       height: 100%/$row;
       position: absolute;
@@ -12,7 +12,7 @@
       z-index: 2;
     }
 
-    .child {
+    .mc-child {
       width: $col*100%;
       height: $row*100%;
       background-size: cover;
@@ -29,11 +29,11 @@
   }
   @for $i from 0 to $row {
     @for $j from 0 to $col {
-      #{$nameSpace} .item-#{$i}-#{$j} {
+      #{$nameSpace} .mc-item-#{$i}-#{$j} {
         top: 100%/$row*($i);
         left: 100%/$col*($j);
 
-        .child {
+        .mc-child {
           top: -100%*($i);
           left: -100%*($j);
         }

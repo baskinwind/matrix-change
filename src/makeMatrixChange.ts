@@ -46,17 +46,19 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
     if (option.animate) {
       let listenAnimation = () => {
         if (dom.dataset.mchange === '2') {
-          dom.dataset.mchange = '';
           dom.className = baseClass;
+          dom.dataset.mchange = '';
           dom.removeEventListener('animationend', listenAnimation);
           return;
         }
+        // 当动画结束时，进行出场动画时，会有段时间的显示状态，当性能不佳时会显示出来，造成页面闪烁
+        // 所以先将元素隐藏
         // 防止因为出场动画和入场动画一样而导致没有出场动画
         // 出场动画在下一个 event loop 内设置
-        dom.className = baseClass;
+        dom.className = baseClass + ' mc-hidden';
         setTimeout(() => {
           dom.className = `${baseClass} ${classNameIn}`;
-        });
+        }, 20);
         dom.dataset.mchange = '2';
         let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;

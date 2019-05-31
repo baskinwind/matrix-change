@@ -1,14 +1,14 @@
 # matrixChange
 
 <p>
-  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.4.4-blue.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.4.5-blue.svg" alt="Version"></a>
   <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
 </p>
 
 浏览器端
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/matrixchange/dist/matrixChange.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/matrixchange@1/dist/matrixChange.js"></script>
 ```
 
 npm

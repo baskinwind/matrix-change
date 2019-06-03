@@ -4,7 +4,7 @@ module.exports = {
       jsx: true
     },
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: './config/tsconfig.json',
     tsconfigRootDir: './'
   },
   parser: '@typescript-eslint/parser',

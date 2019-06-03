@@ -24,8 +24,8 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --config build/dev.webpack.config.js",
     "build": "webpack --config build/prod.webpack.config.js",
-    "lint": "eslint src --ext .ts",
-    "compile": "gulp build_ts"
+    "compile": "gulp build_ts",
+    "lint": "eslint src --ext .ts"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^1.9.0",

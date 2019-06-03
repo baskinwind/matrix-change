@@ -1,5 +1,9 @@
-let app = document.getElementById('app');
-let urls = [
+import Vue from 'vue/dist/vue';
+import './index.css';
+
+import { mode, makeMatrixChange } from '../src';
+
+const urls = [
   'http://bgcdn.acohome.cn/100965.jpg',
   'http://bgcdn.acohome.cn/1501505.jpg',
   'http://bgcdn.acohome.cn/1501655.jpg',
@@ -7,17 +11,15 @@ let urls = [
   'http://bgcdn.acohome.cn/328845.jpg'
 ];
 
-let move = mChange.makeMatrixChange(app, {
+const move = makeMatrixChange(document.getElementById('app'), {
   images: urls,
   row: 7,
   col: 9
 });
 
-function getRandom(min, max) {
-  return Math.round(Math.random() * (max - min)) + min;
-}
+const getRandom = (min, max) => Math.round(Math.random() * (max - min)) + min;
 
-move.movePoint(mChange.mode[0]);
+move.movePoint(mode[0]);
 
 new Vue({
   el: '#option',
@@ -98,7 +100,7 @@ new Vue({
   },
   methods: {
     start() {
-      move.movePoint(mChange.mode[getRandom(0, mChange.mode.length - 1)], {
+      move.movePoint(mode[getRandom(0, mode.length - 1)], {
         animate: true,
         classNameIn: 'animated ' + this.inSelect,
         classNameOut: 'animated ' + this.outSelect

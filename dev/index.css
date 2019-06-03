@@ -1,0 +1,80 @@
+html, body, #app, #option {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.animation-item:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#option {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.wrap {
+  padding: 20px 20px 10px 20px;
+  background: rgba(0, 0, 0, .6);
+  color: #fff;
+  width: 200px;
+  line-height: 30px;
+  font-size: 12px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.wrap .flex {
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, .4);
+  border-radius: 4px;
+}
+
+.wrap .col-1 {
+  flex: 0 0 68px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.wrap .col-2 {
+  flex: auto;
+}
+
+select {
+  width: 100%;
+  height: 30px;
+  border: none;
+  display: block;
+  outline: none;
+  color: #fff;
+  background: none;
+}
+
+option {
+  color: #000;
+}
+
+.btn {
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}

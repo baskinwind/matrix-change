@@ -2,7 +2,7 @@ import {modeType} from './type/mode';
 import {matrixOption, MatrixInterface, hitPointFunParams, hitPointOption} from './type/matrix';
 
 type returnType = {
-  movePoint(mode: modeType, option: hitPointOption): void;
+  movePoint(mode: modeType, option?: hitPointOption): void;
   changeImages(images: Array<string>): void;
   matrixChange: MatrixInterface;
 };

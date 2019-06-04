@@ -28,7 +28,8 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
   let image = option.images[0];
 
   ma.$on('changeStart', () => {
-    image = option.images[getRandom(0, option.images.length - 1)];
+    let num = getRandom(option.images.length - 1);
+    image = option.images[num];
   });
 
   ma.$on('hitPoint', ({point, mode, option}: hitPointFunParams) => {

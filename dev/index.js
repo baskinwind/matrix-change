@@ -2,7 +2,6 @@ import Vue from 'vue/dist/vue';
 import './index.css';
 
 import { mode, makeMatrixChange } from '../src';
-import * as modeT from '../src/mode';
 
 const urls = [
   'http://bgcdn.acohome.cn/100965.jpg',
@@ -18,7 +17,12 @@ const move = makeMatrixChange(document.getElementById('app'), {
   col: 9
 });
 
+function getRandom(max, min = 0) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 move.movePoint(mode[0]);
+console.log(mode);
 
 new Vue({
   el: '#option',
@@ -99,7 +103,7 @@ new Vue({
   },
   methods: {
     start() {
-      move.movePoint(modeT.r2lLine, {
+      move.movePoint(mode[getRandom(mode.length - 1)], {
         animate: true,
         classNameIn: 'animated ' + this.inSelect,
         classNameOut: 'animated ' + this.outSelect

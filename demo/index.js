@@ -22,7 +22,7 @@ move.movePoint(mChange.mode[0]);
 new Vue({
   el: '#option',
   data: {
-    inSelect: 'flash',
+    inSelect: 'bounceIn',
     inList: [
       'flash',
       'bounceIn',
@@ -58,7 +58,7 @@ new Vue({
       'slideInRight',
       'slideInUp'
     ],
-    outSelect: 'flash',
+    outSelect: 'bounceOut',
     outList: [
       'flash',
       'bounceOut',

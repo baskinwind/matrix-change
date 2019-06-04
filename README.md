@@ -1,7 +1,7 @@
 # matrixChange
 
 <p>
-  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.4.5-blue.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/matrixChange-1.4.6-blue.svg" alt="Version"></a>
   <a href="https://www.npmjs.com/package/matrixchange"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
 </p>
 

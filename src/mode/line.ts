@@ -5,7 +5,7 @@ import {modeType} from '../type/mode';
  */
 
 /**
- * 从上到下按照每一条斜线运动
+ * 从上到下按照每一条直线运动
  */
 export const t2b: modeType = {
   interval: 140,
@@ -26,14 +26,14 @@ export const t2b: modeType = {
 };
 
 /**
- * 从下到上按照每一条斜线运动
+ * 从下到上按照每一条直线运动
  */
 export const b2t: modeType = {
   interval: 140,
   duration: 1000,
   init(row, col) {
     this.row = row;
-    this.count = row;
+    this.count = row - 1;
   },
   check(i, j) {
     return i === this.count;
@@ -47,7 +47,7 @@ export const b2t: modeType = {
 };
 
 /**
- * 从左到右按照每一条斜线运动
+ * 从左到右按照每一条直线运动
  */
 export const l2r: modeType = {
   interval: 140,
@@ -75,7 +75,7 @@ export const r2l: modeType = {
   duration: 1000,
   init(row, col) {
     this.col = col;
-    this.count = col;
+    this.count = col - 1;
   },
   check(i, j) {
     return j === this.count;
@@ -119,7 +119,7 @@ export const lb2rt: modeType = {
   init(row, col) {
     this.row = row;
     this.col = col;
-    this.count = row;
+    this.count = row - 1;
   },
   check(i, j) {
     return i - j === this.count;
@@ -141,7 +141,7 @@ export const rt2lb: modeType = {
   init(row, col) {
     this.row = row;
     this.col = col;
-    this.count = col;
+    this.count = col - 1;
   },
   check(i, j) {
     return j - i === this.count;
@@ -163,7 +163,7 @@ export const rb2lt: modeType = {
   init(row, col) {
     this.row = row;
     this.col = col;
-    this.count = row + col;
+    this.count = row + col - 2;
   },
   check(i, j) {
     return j + i === this.count;

@@ -99,7 +99,6 @@ new Vue({
   methods: {
     start() {
       move.movePoint(mChange.mode[getRandom(0, mChange.mode.length - 1)], {
-        animate: true,
         classNameIn: 'animated ' + this.inSelect,
         classNameOut: 'animated ' + this.outSelect
       });

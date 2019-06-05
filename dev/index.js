@@ -13,8 +13,8 @@ const urls = [
 
 const move = makeMatrixChange(document.getElementById('app'), {
   images: urls,
-  row: 7,
-  col: 9
+  row: 10,
+  col: 10
 });
 
 function getRandom(max, min = 0) {
@@ -22,12 +22,11 @@ function getRandom(max, min = 0) {
 }
 
 move.movePoint(mode[0]);
-console.log(mode);
 
 new Vue({
   el: '#option',
   data: {
-    inSelect: 'bounceIn',
+    inSelect: 'flipInX',
     inList: [
       'flash',
       'bounceIn',
@@ -63,7 +62,7 @@ new Vue({
       'slideInRight',
       'slideInUp'
     ],
-    outSelect: 'bounceOut',
+    outSelect: 'flipOutX',
     outList: [
       'flash',
       'bounceOut',
@@ -104,7 +103,6 @@ new Vue({
   methods: {
     start() {
       move.movePoint(mode[getRandom(mode.length - 1)], {
-        animate: true,
         classNameIn: 'animated ' + this.inSelect,
         classNameOut: 'animated ' + this.outSelect
       });

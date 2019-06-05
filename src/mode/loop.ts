@@ -161,7 +161,6 @@ function makeLoop({point, direction, adjustLoopPointName, adjustLoopPoint, loopD
       this.loopPoint[adjustLoopPointName] = adjustLoopPoint(row, col);
       // 设置初始的运动方向
       this.type = direction;
-      console.log(JSON.parse(JSON.stringify(this.loopPoint)))
     },
     check(i, j) {
       return i === this.point[0] && j === this.point[1];

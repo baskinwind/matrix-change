@@ -34,8 +34,16 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
 
   ma.$on('hitPoint', ({point, mode, option}: hitPointFunParams) => {
     image = option.image ? option.image : image;
-    let classNameIn = option.animate ? option.classNameIn : '';
-    let classNameOut = option.animate ? option.classNameOut : option.className ? option.className : 'defaultChange';
+    let classNameIn = '';
+    let classNameOut = 'defaultChange';
+
+    if (option.classNameIn && option.classNameOut) {
+      option.animate = true;
+      classNameIn = option.classNameIn;
+      classNameOut = option.classNameOut;
+    } else if (option.className) {
+      classNameOut = option.className;
+    }
 
     let dom = domMatrix[point.x][point.y];
     if (dom.dataset.mchange) {

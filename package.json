@@ -1,6 +1,6 @@
 {
   "name": "matrixchange",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "矩阵运动",
   "main": "lib/index.js",
   "files": [
@@ -23,8 +23,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --hot --config build/dev.webpack.config.js",
-    "build": "webpack --config build/prod.webpack.config.js",
-    "compile": "gulp build_ts",
+    "build": "webpack --config build/prod.webpack.config.js & gulp build_ts",
     "lint": "eslint src --ext .ts"
   },
   "devDependencies": {

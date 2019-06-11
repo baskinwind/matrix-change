@@ -7,7 +7,7 @@ type returnType = {
   matrixChange: MatrixInterface;
 };
 
-import {Matrix} from './Matrix';
+import Matrix from './Matrix';
 import {initContainerLayout, initDom} from './initHtml';
 import {getRandom, getRandomStr} from "./util";
 

@@ -1,4 +1,5 @@
 import mode from './mode/';
+import Matrix from './Matrix'
 
-export {mode};
+export {mode, Matrix};
 export {makeMatrixChange} from './makeMatrixChange';

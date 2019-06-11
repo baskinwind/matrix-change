@@ -3,7 +3,7 @@ import {modeType} from './type/mode';
 
 import {Event} from './Event';
 
-export class Matrix extends Event implements MatrixInterface {
+export default class Matrix extends Event implements MatrixInterface {
 
   row: number;
   col: number;

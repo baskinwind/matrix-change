@@ -23,7 +23,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --hot --config build/dev.webpack.config.js",
-    "build": "webpack --config build/prod.webpack.config.js & gulp build_ts",
+    "build": "webpack --config build/prod.webpack.config.js && gulp build_ts",
     "lint": "eslint src --ext .ts"
   },
   "devDependencies": {

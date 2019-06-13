@@ -41,11 +41,16 @@ export default class Matrix extends Event implements MatrixInterface {
       mode.next();
       if (mode.end()) {
         clearInterval(timer);
-        this.$emit('changeEnd');
         setTimeout(() => {
+          this.$emit('changeEnd');
           this.lock = false;
-        }, 2000);
+        }, 1000);
       }
     }, mode.interval);
+  }
+
+  changeMatrix(row: number, col: number) {
+    this.row = row;
+    this.col = col
   }
 }

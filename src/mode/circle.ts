@@ -69,6 +69,6 @@ export const o2i: modeType = {
     this.right--;
   },
   end() {
-    return this.top >= this.bottom;
+    return this.top > this.bottom;
   }
 };

@@ -14,6 +14,8 @@ export interface MatrixInterface extends EventInterface {
   lock: boolean;
 
   movePoint(mode: modeType, option: object): void;
+
+  changeMatrix(row: number, col: number): void;
 }
 
 export type hitPointOption = {

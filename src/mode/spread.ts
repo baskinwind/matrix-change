@@ -11,8 +11,8 @@ import {getRandom} from "../util";
  */
 export function makeSpread(centerMaker: centerMakerType): modeType {
   return {
-    interval: 200,
-    duration: 1000,
+    interval: 100,
+    duration: 200,
     init(row, col) {
       this.row = row;
       this.col = col;
@@ -31,11 +31,11 @@ export function makeSpread(centerMaker: centerMakerType): modeType {
     },
     end() {
       // 4个角落的距离是整个矩阵里确定好的中心点最远的，只要 4 个角落的距离都比 this.count 远即运动结束
-      let ltDis = this.center[0] + this.center[1];
+      let ltDis = this.center[0] + this.center[1] + 1;
       let lbDis = this.center[0] + this.col - this.center[1];
       let rtDis = this.row - this.center[0] + this.center[1];
       let rbDis = this.row + this.col - ltDis;
-      return ltDis < this.count && lbDis < this.count && rtDis < this.count && rbDis < this.count;
+      return ltDis < this.count + 2 && lbDis < this.count + 2 && rtDis < this.count + 2 && rbDis < this.count + 2;
     }
   }
 }

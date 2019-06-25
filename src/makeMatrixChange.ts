@@ -27,12 +27,13 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
   let ma = new Matrix(option.row, option.col);
   let image = option.images[0];
 
-  ma.$on('changeStart', () => {
+  ma.$on('matrixChangeStart', () => {
     let num = getRandom(option.images.length - 1);
     image = option.images[num];
+    ma.$emit('changeStart');
   });
 
-  ma.$on('hitPoint', ({point, mode, option}: hitPointFunParams) => {
+  ma.$on('hitPoint', ({point, mode, option, end}: hitPointFunParams) => {
     image = option.image ? option.image : image;
     let classNameIn = '';
     let classNameOut = 'defaultChange';
@@ -58,6 +59,10 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
           dom.className = baseClass;
           dom.dataset.mchange = '';
           dom.removeEventListener('animationend', listenAnimation);
+          if (end) {
+            ma.$emit('changeEnd');
+            ma.lock = false;
+          }
           return;
         }
         // 当动画结束时，进行出场动画时，会有段时间的显示状态，当性能不佳时会显示出来，造成页面闪烁
@@ -81,6 +86,10 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
         dom.removeEventListener('transitionend', listenTransition);
         let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;
+        if (end) {
+          ma.$emit('changeEnd');
+          ma.lock = false;
+        }
       };
 
       dom.addEventListener('transitionend', listenTransition);

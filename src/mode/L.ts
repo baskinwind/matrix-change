@@ -8,8 +8,8 @@ import {modeType} from '../type/mode';
  * 从左上到右下进行 L 形运动
  */
 export const lt2rb: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -29,7 +29,7 @@ export const lt2rb: modeType = {
     this.colCount++;
   },
   end() {
-    return this.rowCount === this.row + 1;
+    return this.rowCount === this.row - 1;
   }
 };
 
@@ -37,8 +37,8 @@ export const lt2rb: modeType = {
  * 为上述运动的反向
  */
 export const lt2rbR: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -53,7 +53,7 @@ export const lt2rbR: modeType = {
     this.colCount--;
   },
   end() {
-    return this.rowCount === -1 || this.colCount === -1;
+    return this.rowCount === 0 || this.colCount === 0;
   }
 };
 
@@ -61,8 +61,8 @@ export const lt2rbR: modeType = {
  * 从左下到右上进行 L 形运动
  */
 export const lb2rt: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -82,7 +82,7 @@ export const lb2rt: modeType = {
     this.colCount++;
   },
   end() {
-    return this.rowCount === -1;
+    return this.rowCount === 0;
   }
 };
 
@@ -90,8 +90,8 @@ export const lb2rt: modeType = {
  * 为上述运动的反向
  */
 export const lb2rtR: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -106,7 +106,7 @@ export const lb2rtR: modeType = {
     this.colCount--;
   },
   end() {
-    return this.rowCount === this.row || this.colCount === -1;
+    return this.rowCount === this.row - 1 || this.colCount === 0;
   }
 };
 
@@ -114,8 +114,8 @@ export const lb2rtR: modeType = {
  * 从右上到左下进行 L 形运动
  */
 export const rt2lb: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -135,7 +135,7 @@ export const rt2lb: modeType = {
     this.colCount--;
   },
   end() {
-    return this.rowCount === this.row;
+    return this.rowCount === this.row - 1;
   }
 };
 
@@ -143,8 +143,8 @@ export const rt2lb: modeType = {
  * 为上述运动的反向
  */
 export const rt2lbR: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -159,7 +159,7 @@ export const rt2lbR: modeType = {
     this.colCount++;
   },
   end() {
-    return this.rowCount === -1 || this.colCount === this.col;
+    return this.rowCount === 0 || this.colCount === this.col - 1;
   }
 };
 
@@ -167,8 +167,8 @@ export const rt2lbR: modeType = {
  * 从右下到左上进行 L 形运动
  */
 export const rb2lt: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -188,7 +188,7 @@ export const rb2lt: modeType = {
     this.colCount--;
   },
   end() {
-    return this.rowCount === -1;
+    return this.rowCount === 0;
   }
 };
 
@@ -196,8 +196,8 @@ export const rb2lt: modeType = {
  * 为上述运动的反向
  */
 export const rb2ltR: modeType = {
-  interval: 200,
-  duration: 1200,
+  interval: 100,
+  duration: 200,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -212,7 +212,7 @@ export const rb2ltR: modeType = {
     this.colCount++;
   },
   end() {
-    return this.rowCount === this.row || this.colCount === this.col;
+    return this.rowCount === this.row - 1 || this.colCount === this.col - 1;
   }
 };
 

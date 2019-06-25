@@ -33,4 +33,5 @@ export type hitPointFunParams = {
   };
   mode: modeType;
   option: hitPointOption;
+  end: boolean;
 };

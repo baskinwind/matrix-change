@@ -1,6 +1,6 @@
 {
   "name": "matrixchange",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "description": "矩阵运动",
   "main": "lib/index.js",
   "files": [

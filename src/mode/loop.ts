@@ -142,8 +142,8 @@ function nextAntiClockwise() {
  */
 function makeLoop({point, direction, adjustLoopPointName, adjustLoopPoint, loopDirection = true}: optionType): modeType {
   return {
-    interval: 50,
-    duration: 600,
+    interval: 20,
+    duration: 40,
     init(row, col) {
       this.row = row;
       this.col = col;
@@ -167,7 +167,7 @@ function makeLoop({point, direction, adjustLoopPointName, adjustLoopPoint, loopD
     },
     next: loopDirection ? nextClockwise : nextAntiClockwise,
     end() {
-      return this.count === 0;
+      return this.count === 1;
     }
   }
 }

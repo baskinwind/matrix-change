@@ -21,7 +21,7 @@ export default class Matrix extends Event implements MatrixInterface {
       return;
     }
     mode.init(this.row, this.col);
-    this.$emit('changeStart');
+    this.$emit('matrixChangeStart');
     this.lock = true;
     let timer = setInterval(() => {
       for (let i = 0; i < this.row; i++) {
@@ -33,19 +33,17 @@ export default class Matrix extends Event implements MatrixInterface {
                 y: j
               },
               mode: mode,
-              option
+              option,
+              end: mode.end(),
             });
           }
         }
       }
-      mode.next();
       if (mode.end()) {
         clearInterval(timer);
-        setTimeout(() => {
-          this.$emit('changeEnd');
-          this.lock = false;
-        }, 1000);
+        this.$emit('matrixChangeEnd');
       }
+      mode.next();
     }, mode.interval);
   }
 

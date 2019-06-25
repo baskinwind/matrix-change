@@ -12,11 +12,11 @@ import {getRandom} from "../util";
  */
 export const l2r: modeType = {
   interval: 140,
-  duration: 1000,
+  duration: 280,
   init(row, col) {
     this.row = row;
     this.col = col;
-    this.base = getRandom(row + col, 3);
+    this.base = getRandom(Math.max(row, col), 3);
     this.count = 0;
   },
   check(i, j) {
@@ -26,7 +26,7 @@ export const l2r: modeType = {
     this.count++;
   },
   end() {
-    return this.count === this.base + 1;
+    return this.count === this.base - 1;
   }
 };
 
@@ -36,11 +36,11 @@ export const l2r: modeType = {
  */
 export const r2l: modeType = {
   interval: 140,
-  duration: 1000,
+  duration: 280,
   init(row, col) {
     this.row = row;
     this.col = col;
-    this.base = getRandom(row + col, 3);
+    this.base = getRandom(Math.max(row, col), 3);
     this.count = this.base;
   },
   check(i, j) {
@@ -50,7 +50,7 @@ export const r2l: modeType = {
     this.count--;
   },
   end() {
-    return this.count === -1;
+    return this.count === 0;
   }
 };
 
@@ -60,11 +60,11 @@ export const r2l: modeType = {
  */
 export const t2b: modeType = {
   interval: 140,
-  duration: 1000,
+  duration: 280,
   init(row, col) {
     this.row = row;
     this.col = col;
-    this.base = getRandom(row + col, 3);
+    this.base = getRandom(Math.max(row, col), 3);
     this.count = 0;
   },
   check(i, j) {
@@ -74,7 +74,7 @@ export const t2b: modeType = {
     this.count++;
   },
   end() {
-    return this.count === this.base + 1;
+    return this.count === this.base - 1;
   }
 };
 
@@ -84,11 +84,11 @@ export const t2b: modeType = {
  */
 export const b2t: modeType = {
   interval: 140,
-  duration: 1000,
+  duration: 280,
   init(row, col) {
     this.row = row;
     this.col = col;
-    this.base = getRandom(row + col, 3);
+    this.base = getRandom(Math.max(row, col), 3);
     this.count = this.base;
   },
   check(i, j) {
@@ -98,6 +98,6 @@ export const b2t: modeType = {
     this.count--;
   },
   end() {
-    return this.count === -1;
+    return this.count === 0;
   }
 };

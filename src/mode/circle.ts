@@ -9,8 +9,8 @@ import {modeType} from '../type/mode';
  * top bottom left right 表示当前需要运动的边
  */
 export const i2o: modeType = {
-  interval: 300,
-  duration: 1400,
+  interval: 200,
+  duration: 400,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -27,7 +27,6 @@ export const i2o: modeType = {
       this.left = this.top;
       this.right = this.col - this.top - 1;
     }
-    console.log(this.top, this.bottom, this.left, this.right)
   },
   check(i, j) {
     return ((i === this.top || i === this.bottom) && j >= this.left && j <= this.right) ||
@@ -40,7 +39,7 @@ export const i2o: modeType = {
     this.right++;
   },
   end() {
-    return this.top === -1;
+    return this.top === 0;
   }
 };
 
@@ -48,8 +47,8 @@ export const i2o: modeType = {
  * 上述运动的反向
  */
 export const o2i: modeType = {
-  interval: 300,
-  duration: 1400,
+  interval: 200,
+  duration: 400,
   init(row, col) {
     this.row = row;
     this.col = col;
@@ -69,6 +68,6 @@ export const o2i: modeType = {
     this.right--;
   },
   end() {
-    return this.top > this.bottom;
+    return this.top === this.bottom || this.top + 1 === this.bottom;
   }
 };

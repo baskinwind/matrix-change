@@ -1,6 +1,6 @@
 {
   "name": "matrixchange",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "矩阵运动",
   "main": "lib/index.js",
   "files": [
@@ -29,9 +29,9 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
-    "css-loader": "^2.1.1",
-    "del": "^4.1.1",
-    "eslint": "^5.16.0",
+    "css-loader": "^3.1.0",
+    "del": "^5.0.0",
+    "eslint": "^6.1.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.2",
     "gulp": "^4.0.2",

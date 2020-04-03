@@ -2,14 +2,13 @@ import Vue from 'vue/dist/vue';
 import './index.css';
 
 import { mode, makeMatrixChange } from '../src';
-import { line } from '../src/mode';
 
 const urls = [
-  'http://bgcdn.acohome.cn/100965.jpg',
-  'http://bgcdn.acohome.cn/1501505.jpg',
-  'http://bgcdn.acohome.cn/1501655.jpg',
-  'http://bgcdn.acohome.cn/286477.jpg',
-  'http://bgcdn.acohome.cn/328845.jpg'
+  'http://wallpapercdn.acohome.cn/AKFox_ZH-CN8586782340_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AKFox_ZH-CN8586782340_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AberystwythSeafront_EN-AU9268158003_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AbstractSaltBeds_ZH-CN8351691359_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AddoElephants_ZH-CN13744097225_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50'
 ];
 
 const move = makeMatrixChange(document.getElementById('app'), {
@@ -22,7 +21,7 @@ function getRandom(max, min = 0) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-move.movePoint(line.rt2lb);
+move.movePoint(mode[getRandom(mode.length)]);
 
 new Vue({
   el: '#option',
@@ -103,7 +102,7 @@ new Vue({
   },
   methods: {
     start() {
-      move.movePoint(line.rt2lb, {
+      move.movePoint(mode[getRandom(mode.length)], {
         classNameIn: 'animated ' + this.inSelect,
         classNameOut: 'animated ' + this.outSelect
       });

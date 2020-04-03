@@ -8,7 +8,7 @@
 ## 安装
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/matrixchange@1/dist/matrixChange.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/matrixchange@1/dist/matrix-change.js"></script>
 ```
 
 ```
@@ -30,8 +30,6 @@ import {makeMatrixChange, mode} from 'matrixchange'
 
 ## demo
 
-![gif](http://blogcdn.acohome.cn/change.gif)
-
 [Demo](http://acohome.cn/demo/matrix/index.html)
 
 [jsfiddle](https://jsfiddle.net/acccco/pgff8k5j/)
@@ -41,9 +39,11 @@ import {makeMatrixChange, mode} from 'matrixchange'
 ```javascript
 var app = document.getElementById('app')
 var urls = [
-  'http://bgcdn.acohome.cn/100965.jpg',
-  'http://bgcdn.acohome.cn/1501505.jpg',
-  'http://bgcdn.acohome.cn/1501655.jpg'
+  'http://wallpapercdn.acohome.cn/AKFox_ZH-CN8586782340_1920x1080.jpg',
+  'http://wallpapercdn.acohome.cn/AKFox_ZH-CN8586782340_1920x1080.jpg',
+  'http://wallpapercdn.acohome.cn/AberystwythSeafront_EN-AU9268158003_1920x1080.jpg',
+  'http://wallpapercdn.acohome.cn/AbstractSaltBeds_ZH-CN8351691359_1920x1080.jpg',
+  'http://wallpapercdn.acohome.cn/AddoElephants_ZH-CN13744097225_1920x1080.jpg'
 ];
 
 // 该方法返回一个对象

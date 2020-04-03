@@ -1,13 +1,13 @@
-let app = document.getElementById('app');
-let urls = [
-  'http://bgcdn.acohome.cn/100965.jpg',
-  'http://bgcdn.acohome.cn/1501505.jpg',
-  'http://bgcdn.acohome.cn/1501655.jpg',
-  'http://bgcdn.acohome.cn/286477.jpg',
-  'http://bgcdn.acohome.cn/328845.jpg'
+var app = document.getElementById('app');
+var urls = [
+  'http://wallpapercdn.acohome.cn/AKFox_ZH-CN8586782340_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AKFox_ZH-CN8586782340_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AberystwythSeafront_EN-AU9268158003_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AbstractSaltBeds_ZH-CN8351691359_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50',
+  'http://wallpapercdn.acohome.cn/AddoElephants_ZH-CN13744097225_1920x1080.jpg?mageMogr2/thumbnail/640x/interlace/1/blur/1x0/quality/50'
 ];
-
-let move = mChange.makeMatrixChange(app, {
+var index = 0;
+var move = mChange.makeMatrixChange(app, {
   images: urls,
   row: 7,
   col: 9
@@ -98,9 +98,12 @@ new Vue({
   },
   methods: {
     start() {
+      index += 1;
+      index %= urls.length;
       move.movePoint(mChange.mode[getRandom(0, mChange.mode.length - 1)], {
         classNameIn: 'animated ' + this.inSelect,
-        classNameOut: 'animated ' + this.outSelect
+        classNameOut: 'animated ' + this.outSelect,
+        image: urls[index]
       });
     }
   }

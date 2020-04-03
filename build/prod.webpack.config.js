@@ -4,7 +4,7 @@ module.exports = {
   mode: 'production',
   entry: './src/index.ts',
   output: {
-    filename: 'matrixChange.js',
+    filename: 'matrix-change.js',
     path: path.resolve(__dirname, '../dist'),
     library: 'mChange',
     libraryTarget: 'umd'

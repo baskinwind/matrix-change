@@ -1,4 +1,4 @@
-import mode from './mode/';
+import mode from './mode/index';
 import Matrix from './Matrix'
 
 export {mode, Matrix};

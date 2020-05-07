@@ -1,15 +1,31 @@
-import {modeType} from './type/mode';
-import {matrixOption, MatrixInterface, hitPointFunParams, hitPointOption} from './type/matrix';
+import {modeType} from './mode/index';
 
-type returnType = {
-  movePoint(mode: modeType, option?: hitPointOption): void;
-  changeImages(images: Array<string>): void;
-  matrixChange: MatrixInterface;
-};
-
-import Matrix from './Matrix';
+import Matrix, {hitPointParams} from './Matrix';
 import {initContainerLayout, initDom} from './initHtml';
 import {getRandom, getRandomStr} from "./util";
+
+interface matrixOption {
+  images: string[];
+  nameSpace?: string;
+  row?: number;
+  col?: number;
+}
+
+interface hitPointOption {
+  image?: string;
+  className?: string;
+  animate?: boolean;
+  classNameIn?: string;
+  classNameOut?: string;
+}
+
+interface makeMatrixChangeReturn {
+  matrixChange: Matrix;
+
+  movePoint(mode: modeType, option?: hitPointOption): void;
+
+  changeImages(images: string[]): void;
+}
 
 let defaultOption = {
   nameSpace: getRandomStr(8),
@@ -18,50 +34,50 @@ let defaultOption = {
   images: []
 };
 
-export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): returnType {
+export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): makeMatrixChangeReturn {
   let option = {...defaultOption, ...optionIn};
 
   initContainerLayout(option.nameSpace, option.row, option.col);
   let domMatrix = initDom(dom, option.nameSpace, option.row, option.col);
 
-  let ma = new Matrix(option.row, option.col);
+  let matrix = new Matrix(option.row, option.col);
   let image = option.images[0];
 
-  ma.$on('matrixChangeStart', () => {
+  matrix.$on('matrixChangeStart', () => {
     let num = getRandom(option.images.length - 1);
     image = option.images[num];
-    ma.$emit('changeStart');
+    matrix.$emit('changeStart');
   });
 
-  ma.$on('hitPoint', ({point, mode, option, end}: hitPointFunParams) => {
-    image = option.image ? option.image : image;
+  matrix.$on<hitPointParams<hitPointOption>>('hitPoint', (event) => {
+    image = event.option.image ? event.option.image : image;
     let classNameIn = '';
     let classNameOut = 'defaultChange';
 
-    if (option.classNameIn && option.classNameOut) {
-      option.animate = true;
-      classNameIn = option.classNameIn;
-      classNameOut = option.classNameOut;
-    } else if (option.className) {
-      classNameOut = option.className;
+    if (event.option.classNameIn && event.option.classNameOut) {
+      event.option.animate = true;
+      classNameIn = event.option.classNameIn;
+      classNameOut = event.option.classNameOut;
+    } else if (event.option.className) {
+      classNameOut = event.option.className;
     }
 
-    let dom = domMatrix[point.x][point.y];
+    let dom = domMatrix[event.point.x][event.point.y];
     if (dom.dataset.mchange) {
       return;
     }
 
-    let baseClass = <string>dom.dataset.baseclass;
+    let baseClass = dom.dataset.baseclass as string;
 
-    if (option.animate) {
+    if (event.option.animate) {
       let listenAnimation = () => {
         if (dom.dataset.mchange === '2') {
           dom.className = baseClass;
           dom.dataset.mchange = '';
           dom.removeEventListener('animationend', listenAnimation);
-          if (end) {
-            ma.$emit('changeEnd');
-            ma.lock = false;
+          if (event.end) {
+            matrix.$emit('changeEnd');
+            matrix.lock = false;
           }
           return;
         }
@@ -86,9 +102,9 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
         dom.removeEventListener('transitionend', listenTransition);
         let child = <HTMLElement>dom.children[0];
         child.style.backgroundImage = `url(${image})`;
-        if (end) {
-          ma.$emit('changeEnd');
-          ma.lock = false;
+        if (event.end) {
+          matrix.$emit('changeEnd');
+          matrix.lock = false;
         }
       };
 
@@ -97,14 +113,16 @@ export function makeMatrixChange(dom: HTMLElement, optionIn: matrixOption): retu
 
     dom.className = `${baseClass} ${classNameOut}`;
     dom.dataset.mchange = '1';
-    dom.style.transition = mode.duration / 1000 + 's';
+    dom.style.transition = event.mode.duration / 1000 + 's';
   });
 
   return {
-    movePoint: ma.movePoint.bind(ma),
+    matrixChange: matrix,
+    movePoint: (mode, option = {}) => {
+      matrix.movePoint<hitPointOption>(mode, option)
+    },
     changeImages(images) {
       option.images = images;
     },
-    matrixChange: ma
   };
 }

@@ -4,11 +4,6 @@ const ts = require('gulp-typescript');
 
 const tsProject = ts.createProject('./tsconfig.json');
 
-function copyTypes() {
-  return gulp.src('src/type/*')
-    .pipe(gulp.dest('lib/type'));
-}
-
 function clean() {
   return del(['lib']);
 }
@@ -19,4 +14,4 @@ function compileTS() {
     .pipe(gulp.dest('lib'));
 }
 
-exports.build_ts = gulp.series(clean, copyTypes, compileTS);
+exports.build_ts = gulp.series(clean, compileTS);

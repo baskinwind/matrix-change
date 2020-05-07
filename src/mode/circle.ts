@@ -1,4 +1,4 @@
-import {modeType} from '../type/mode';
+import {modeType} from './index';
 
 /**
  *  回字形运动，i-内部 o-外部

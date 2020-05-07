@@ -1,23 +1,31 @@
-import {MatrixInterface} from './type/matrix';
-import {modeType} from './type/mode';
+import {modeType} from './mode/index';
 
 import {Event} from './Event';
 
-export default class Matrix extends Event implements MatrixInterface {
+export interface hitPointParams<T> {
+  point: {
+    x: number;
+    y: number;
+  };
+  mode: modeType;
+  end: boolean;
+  option: T;
+}
+
+export default class Matrix extends Event {
 
   row: number;
   col: number;
-  lock: boolean;
+  lock: boolean = false;
 
   constructor(row = 7, col = 9) {
     super();
     this.row = row;
     this.col = col;
-    this.lock = false;
   }
 
-  movePoint(mode: modeType, option: object = {}) {
-    if (this.lock === true) {
+  movePoint<T>(mode: modeType, option: T) {
+    if (this.lock) {
       return;
     }
     mode.init(this.row, this.col);
@@ -27,14 +35,14 @@ export default class Matrix extends Event implements MatrixInterface {
       for (let i = 0; i < this.row; i++) {
         for (let j = 0; j < this.col; j++) {
           if (mode.check(i, j)) {
-            this.$emit('hitPoint', {
+            this.$emit<hitPointParams<T>>('hitPoint', {
               point: {
                 x: i,
                 y: j
               },
               mode: mode,
-              option,
               end: mode.end(),
+              option,
             });
           }
         }

@@ -1,4 +1,4 @@
-import {modeType} from '../type/mode';
+import {modeType} from './index';
 
 /**
  *  根据随机值产生的线性动画归类，方向代表 t-上 b-下 l-左 r-右

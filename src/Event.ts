@@ -1,17 +1,14 @@
-import {eventGroupType, EventInterface} from './type/event';
+interface eventGroupType {
+  [eventName: string]: Function[];
+}
 
 let uid = 0;
 
-export class Event implements EventInterface {
-  id: number;
-  _events: eventGroupType;
+export class Event {
+  id: number = uid++;
+  _events: eventGroupType = {};
 
-  constructor() {
-    this.id = uid++;
-    this._events = {};
-  }
-
-  $on(eventName: string, fn: Function): this {
+  $on<T>(eventName: string, fn: (event: T, ...rest: any[]) => void): this {
     if (!this._events[eventName]) {
       this._events[eventName] = []
     }
@@ -19,14 +16,13 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $once(eventName: string, fn: Function) {
-    let proxyFun = (...args: []) => {
+  $once<T>(eventName: string, fn: (event: T, ...rest: any[]) => void) {
+    let proxyFun = (event: T, ...rest: any[]) => {
       this.$off(eventName, proxyFun);
-      fn.apply(this, args);
+      fn.call(this, event, ...rest);
     };
     // @ts-ignore
     proxyFun.fn = fn;
-
     this.$on(eventName, proxyFun);
     return this;
   }
@@ -63,10 +59,10 @@ export class Event implements EventInterface {
     return this;
   }
 
-  $emit(eventName: string, ...args: Array<any>) {
+  $emit<T>(eventName: string, event?: T, ...rest: any[]) {
     let cbs = this._events[eventName];
     if (cbs) {
-      cbs.forEach(func => func.apply(this, <[]>args));
+      cbs.forEach(func => func.call(this, event, ...rest));
     }
     return this;
   }

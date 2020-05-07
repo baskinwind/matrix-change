@@ -1,4 +1,4 @@
-import {modeType} from '../type/mode';
+import {modeType} from './index';
 
 type centerMakerType = (row: number, col: number) => [number, number];
 

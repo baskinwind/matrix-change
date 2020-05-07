@@ -36,7 +36,7 @@ export function initContainerLayout(nameSpace: string, row: number, col: number)
 
   let containStyle = ['position:relative;', 'overflow: hidden;'].join('');
 
-  let matrixChange = [
+  let matrixChangeStyle = [
     `.${nameSpace}{${containStyle}}`,
     `.${nameSpace} .defaultChange{transform: scale(0);border-radius: 50%;}`,
     `.${nameSpace} .mc-animation-item{${wrapSizeStyle}}`,
@@ -46,11 +46,11 @@ export function initContainerLayout(nameSpace: string, row: number, col: number)
   ].join('');
 
   let styleDom = document.createElement('style');
-  styleDom.innerHTML = matrixChange;
+  styleDom.innerHTML = matrixChangeStyle;
   document.head.appendChild(styleDom);
 }
 
-export function initDom(dom: HTMLElement, nameSpace: string, row: number, col: number): Array<Array<HTMLElement>> {
+export function initDom(dom: HTMLElement, nameSpace: string, row: number, col: number): HTMLElement[][] {
   let fragment = document.createDocumentFragment();
   let domMatrix = [];
   for (let i = 1; i <= row; i++) {

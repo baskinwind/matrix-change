@@ -2,7 +2,9 @@
   "name": "matrixchange",
   "version": "1.5.2",
   "description": "矩阵运动",
-  "main": "lib/index.js",
+  "main": "dist/matrix-change.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib",
     "dist"
@@ -24,6 +26,7 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --config build/dev.webpack.config.js",
     "build": "webpack --config build/prod.webpack.config.js && gulp build_ts",
+    "build:ts": "gulp build_ts",
     "lint": "eslint src --ext .ts"
   },
   "devDependencies": {

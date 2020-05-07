@@ -1,4 +1,4 @@
-import {modeType} from '../type/mode';
+import {modeType} from './index';
 
 /**
  *  线性运动，方向代表 t-上 b-下 l-左 r-右

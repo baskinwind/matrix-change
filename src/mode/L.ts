@@ -1,7 +1,7 @@
-import {modeType} from '../type/mode';
+import {modeType} from './index';
 
 /**
- *  L 形运动，方向代表 t-上 b-下 l-左 r-右 R-前面代表的运动形式的反向
+ *  L 形运动，t-上 b-下 l-左 r-右 R-前面代表的运动形式的反向
  */
 
 /**

@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>矩阵动画</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
-</head>
-<body>
-<div id="option" class="flex">
-  <div class="wrap">
-    <div class="flex">
-      <div class="col-1">OUT</div>
-      <div class="col-2">
-        <select name="animation-in" v-model="outSelect">
-          <option v-for="item in outList" :value="item">{{item}}</option>
-        </select>
+  <head>
+    <meta charset="UTF-8" />
+    <title>矩阵动画</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/animate.css/3.7.2/animate.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="option" class="flex">
+      <div class="wrap">
+        <div class="flex">
+          <div class="col-1">OUT</div>
+          <div class="col-2">
+            <select name="animation-in" v-model="outSelect">
+              <option v-for="item in outList" :value="item">{{item}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="col-1">IN</div>
+          <div class="col-2">
+            <select name="animation-in" v-model="inSelect">
+              <option v-for="item in inList" :value="item">{{item}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="btn" @click="start">ACTIVE</div>
+        </div>
       </div>
     </div>
-    <div class="flex">
-      <div class="col-1">IN</div>
-      <div class="col-2">
-        <select name="animation-in" v-model="inSelect">
-          <option v-for="item in inList" :value="item">{{item}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="flex">
-      <div class="btn" @click="start">ACTIVE</div>
-    </div>
-  </div>
-</div>
-<div id="app"></div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdn.jsdelivr.net/npm/matrixchange@1/dist/matrix-change.js"></script>
-<script src="index.js"></script>
+    <div id="app"></div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/matrixchange@1/dist/matrix-change.js"></script>
+  <script src="index.js"></script>
 </html>

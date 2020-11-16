@@ -1,4 +1,4 @@
-import {modeType} from './index';
+import { modeType } from "./index";
 
 /**
  *  线性运动，方向代表 t-上 b-下 l-左 r-右
@@ -22,7 +22,7 @@ export const t2b: modeType = {
   },
   end() {
     return this.count === this.row - 1;
-  }
+  },
 };
 
 /**
@@ -43,7 +43,7 @@ export const b2t: modeType = {
   },
   end() {
     return this.count === 0;
-  }
+  },
 };
 
 /**
@@ -64,7 +64,7 @@ export const l2r: modeType = {
   },
   end() {
     return this.count === this.col - 1;
-  }
+  },
 };
 
 /**
@@ -85,7 +85,7 @@ export const r2l: modeType = {
   },
   end() {
     return this.count === 0;
-  }
+  },
 };
 
 /**
@@ -107,7 +107,7 @@ export const lt2rb: modeType = {
   },
   end() {
     return this.count === this.row + this.col - 2;
-  }
+  },
 };
 
 /**
@@ -129,7 +129,7 @@ export const lb2rt: modeType = {
   },
   end() {
     return this.count === -this.col + 1;
-  }
+  },
 };
 
 /**
@@ -151,7 +151,7 @@ export const rt2lb: modeType = {
   },
   end() {
     return this.count === -this.row + 1;
-  }
+  },
 };
 
 /**
@@ -173,5 +173,5 @@ export const rb2lt: modeType = {
   },
   end() {
     return this.count === 0;
-  }
+  },
 };

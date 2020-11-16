@@ -1,4 +1,4 @@
-import {modeType} from './index';
+import { modeType } from "./index";
 
 /**
  *  L 形运动，t-上 b-下 l-左 r-右 R-前面代表的运动形式的反向
@@ -22,7 +22,10 @@ export const lt2rb: modeType = {
     }
   },
   check(i, j) {
-    return (i === this.rowCount && j <= this.colCount) || (j === this.colCount && i <= this.rowCount);
+    return (
+      (i === this.rowCount && j <= this.colCount) ||
+      (j === this.colCount && i <= this.rowCount)
+    );
   },
   next() {
     this.rowCount++;
@@ -30,7 +33,7 @@ export const lt2rb: modeType = {
   },
   end() {
     return this.rowCount === this.row - 1;
-  }
+  },
 };
 
 /**
@@ -46,7 +49,10 @@ export const lt2rbR: modeType = {
     this.colCount = col - 1;
   },
   check(i, j) {
-    return (i === this.rowCount && j <= this.colCount) || (j === this.colCount && i <= this.rowCount);
+    return (
+      (i === this.rowCount && j <= this.colCount) ||
+      (j === this.colCount && i <= this.rowCount)
+    );
   },
   next() {
     this.rowCount--;
@@ -54,7 +60,7 @@ export const lt2rbR: modeType = {
   },
   end() {
     return this.rowCount === 0 || this.colCount === 0;
-  }
+  },
 };
 
 /**
@@ -75,7 +81,10 @@ export const lb2rt: modeType = {
     }
   },
   check(i, j) {
-    return (i === this.rowCount && j <= this.colCount) || (j === this.colCount && i >= this.rowCount);
+    return (
+      (i === this.rowCount && j <= this.colCount) ||
+      (j === this.colCount && i >= this.rowCount)
+    );
   },
   next() {
     this.rowCount--;
@@ -83,7 +92,7 @@ export const lb2rt: modeType = {
   },
   end() {
     return this.rowCount === 0;
-  }
+  },
 };
 
 /**
@@ -99,7 +108,10 @@ export const lb2rtR: modeType = {
     this.colCount = col - 1;
   },
   check(i, j) {
-    return (i === this.rowCount && j <= this.colCount) || (j === this.colCount && i >= this.rowCount);
+    return (
+      (i === this.rowCount && j <= this.colCount) ||
+      (j === this.colCount && i >= this.rowCount)
+    );
   },
   next() {
     this.rowCount++;
@@ -107,7 +119,7 @@ export const lb2rtR: modeType = {
   },
   end() {
     return this.rowCount === this.row - 1 || this.colCount === 0;
-  }
+  },
 };
 
 /**
@@ -128,7 +140,10 @@ export const rt2lb: modeType = {
     }
   },
   check(i, j) {
-    return (i === this.rowCount && j >= this.colCount) || (j === this.colCount && i <= this.rowCount);
+    return (
+      (i === this.rowCount && j >= this.colCount) ||
+      (j === this.colCount && i <= this.rowCount)
+    );
   },
   next() {
     this.rowCount++;
@@ -136,7 +151,7 @@ export const rt2lb: modeType = {
   },
   end() {
     return this.rowCount === this.row - 1;
-  }
+  },
 };
 
 /**
@@ -152,7 +167,10 @@ export const rt2lbR: modeType = {
     this.colCount = 0;
   },
   check(i, j) {
-    return (i === this.rowCount && j >= this.colCount) || (j === this.colCount && i <= this.rowCount);
+    return (
+      (i === this.rowCount && j >= this.colCount) ||
+      (j === this.colCount && i <= this.rowCount)
+    );
   },
   next() {
     this.rowCount--;
@@ -160,7 +178,7 @@ export const rt2lbR: modeType = {
   },
   end() {
     return this.rowCount === 0 || this.colCount === this.col - 1;
-  }
+  },
 };
 
 /**
@@ -181,7 +199,10 @@ export const rb2lt: modeType = {
     }
   },
   check(i, j) {
-    return (i === this.rowCount && j >= this.colCount) || (j === this.colCount && i >= this.rowCount);
+    return (
+      (i === this.rowCount && j >= this.colCount) ||
+      (j === this.colCount && i >= this.rowCount)
+    );
   },
   next() {
     this.rowCount--;
@@ -189,7 +210,7 @@ export const rb2lt: modeType = {
   },
   end() {
     return this.rowCount === 0;
-  }
+  },
 };
 
 /**
@@ -205,7 +226,10 @@ export const rb2ltR: modeType = {
     this.colCount = 0;
   },
   check(i, j) {
-    return (i === this.rowCount && j >= this.colCount) || (j === this.colCount && i >= this.rowCount);
+    return (
+      (i === this.rowCount && j >= this.colCount) ||
+      (j === this.colCount && i >= this.rowCount)
+    );
   },
   next() {
     this.rowCount++;
@@ -213,7 +237,5 @@ export const rb2ltR: modeType = {
   },
   end() {
     return this.rowCount === this.row - 1 || this.colCount === this.col - 1;
-  }
+  },
 };
-
-

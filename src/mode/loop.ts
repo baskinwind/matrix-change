@@ -1,4 +1,4 @@
-import {modeType} from './index';
+import { modeType } from "./index";
 
 type pointType = [number, number];
 
@@ -10,7 +10,7 @@ type optionType = {
   adjustLoopPointName: string;
   adjustLoopPoint: pointMaker;
   loopDirection?: boolean;
-}
+};
 
 /**
  *  绕圈运动，从某个角落开始向中心绕圈
@@ -22,7 +22,7 @@ type optionType = {
  * @param {pointType} point2
  */
 function pointEqual(point1: pointType, point2: pointType) {
-  return point1[0] === point2[0] && point1[1] === point2[1]
+  return point1[0] === point2[0] && point1[1] === point2[1];
 }
 
 /**
@@ -32,52 +32,52 @@ function nextClockwise() {
   // @ts-ignore
   let that: modeType = this;
   that.count--;
-  if (that.type === 'rowRight') {
+  if (that.type === "rowRight") {
     if (pointEqual(that.point, that.loopPoint.rt)) {
       that.point[0]++;
-      that.type = 'colDown';
+      that.type = "colDown";
       that.loopPoint.rt[0]++;
       that.loopPoint.rt[1]--;
     } else {
       that.point[1]++;
     }
-    return
+    return;
   }
 
-  if (that.type === 'colDown') {
+  if (that.type === "colDown") {
     if (pointEqual(that.point, that.loopPoint.rb)) {
       that.point[1]--;
-      that.type = 'rowLeft';
+      that.type = "rowLeft";
       that.loopPoint.rb[0]--;
       that.loopPoint.rb[1]--;
     } else {
       that.point[0]++;
     }
-    return
+    return;
   }
 
-  if (that.type === 'rowLeft') {
+  if (that.type === "rowLeft") {
     if (pointEqual(that.point, that.loopPoint.lb)) {
       that.point[0]--;
-      that.type = 'colUp';
+      that.type = "colUp";
       that.loopPoint.lb[0]--;
       that.loopPoint.lb[1]++;
     } else {
       that.point[1]--;
     }
-    return
+    return;
   }
 
-  if (that.type === 'colUp') {
+  if (that.type === "colUp") {
     if (pointEqual(that.point, that.loopPoint.lt)) {
       that.point[1]++;
-      that.type = 'rowRight';
+      that.type = "rowRight";
       that.loopPoint.lt[0]++;
       that.loopPoint.lt[1]++;
     } else {
       that.point[0]--;
     }
-    return
+    return;
   }
 }
 
@@ -88,59 +88,65 @@ function nextAntiClockwise() {
   // @ts-ignore
   let that: modeType = this;
   that.count--;
-  if (that.type === 'colDown') {
+  if (that.type === "colDown") {
     if (pointEqual(that.point, that.loopPoint.lb)) {
       that.point[1]++;
-      that.type = 'rowRight';
+      that.type = "rowRight";
       that.loopPoint.lb[0]--;
       that.loopPoint.lb[1]++;
     } else {
       that.point[0]++;
     }
-    return
+    return;
   }
 
-  if (that.type === 'rowRight') {
+  if (that.type === "rowRight") {
     if (pointEqual(that.point, that.loopPoint.rb)) {
       that.point[0]--;
-      that.type = 'colUp';
+      that.type = "colUp";
       that.loopPoint.rb[0]--;
       that.loopPoint.rb[1]--;
     } else {
       that.point[1]++;
     }
-    return
+    return;
   }
 
-  if (that.type === 'colUp') {
+  if (that.type === "colUp") {
     if (pointEqual(that.point, that.loopPoint.rt)) {
       that.point[1]--;
-      that.type = 'rowLeft';
+      that.type = "rowLeft";
       that.loopPoint.rt[0]++;
       that.loopPoint.rt[1]--;
     } else {
       that.point[0]--;
     }
-    return
+    return;
   }
 
-  if (that.type === 'rowLeft') {
+  if (that.type === "rowLeft") {
     if (pointEqual(that.point, that.loopPoint.lt)) {
       that.point[0]++;
-      that.type = 'colDown';
+      that.type = "colDown";
       that.loopPoint.lt[0]++;
       that.loopPoint.lt[1]++;
     } else {
       that.point[1]--;
     }
-    return
+    return;
   }
 }
 
 /**
  * 用于生成动画效果
  */
-function makeLoop({point, direction, adjustLoopPointName, adjustLoopPoint, loopDirection = true}: optionType): modeType {
+function makeLoop({
+  point,
+  direction,
+  adjustLoopPointName,
+  adjustLoopPoint,
+  loopDirection = true,
+}: optionType): modeType {
   return {
     interval: 20,
     duration: 40,
@@ -155,7 +161,7 @@ function makeLoop({point, direction, adjustLoopPointName, adjustLoopPoint, loopD
         lt: [0, 0],
         rt: [0, col - 1],
         rb: [row - 1, col - 1],
-        lb: [row - 1, 0]
+        lb: [row - 1, 0],
       };
       // 根据不同的动画形式需要调整不同的转向点
       this.loopPoint[adjustLoopPointName] = adjustLoopPoint(row, col);
@@ -168,8 +174,8 @@ function makeLoop({point, direction, adjustLoopPointName, adjustLoopPoint, loopD
     next: loopDirection ? nextClockwise : nextAntiClockwise,
     end() {
       return this.count === 1;
-    }
-  }
+    },
+  };
 }
 
 /**
@@ -180,60 +186,60 @@ function makeLoop({point, direction, adjustLoopPointName, adjustLoopPoint, loopD
 
 export const lt: modeType = makeLoop({
   point: () => [0, 0],
-  direction: 'rowRight',
-  adjustLoopPointName: 'lt',
-  adjustLoopPoint: () => [1, 0]
+  direction: "rowRight",
+  adjustLoopPointName: "lt",
+  adjustLoopPoint: () => [1, 0],
 });
 
 export const rt: modeType = makeLoop({
   point: (row, col) => [0, col - 1],
-  direction: 'colDown',
-  adjustLoopPointName: 'rt',
-  adjustLoopPoint: (row, col) => [0, col - 2]
+  direction: "colDown",
+  adjustLoopPointName: "rt",
+  adjustLoopPoint: (row, col) => [0, col - 2],
 });
 
 export const rb: modeType = makeLoop({
   point: (row, col) => [row - 1, col - 1],
-  direction: 'rowLeft',
-  adjustLoopPointName: 'rb',
-  adjustLoopPoint: (row, col) => [row - 2, col - 1]
+  direction: "rowLeft",
+  adjustLoopPointName: "rb",
+  adjustLoopPoint: (row, col) => [row - 2, col - 1],
 });
 
 export const lb: modeType = makeLoop({
   point: (row) => [row - 1, 0],
-  direction: 'colUp',
-  adjustLoopPointName: 'lb',
-  adjustLoopPoint: (row) => [row - 1, 1]
+  direction: "colUp",
+  adjustLoopPointName: "lb",
+  adjustLoopPoint: (row) => [row - 1, 1],
 });
 
 export const ltAnti: modeType = makeLoop({
   point: () => [0, 0],
-  direction: 'colDown',
-  adjustLoopPointName: 'lt',
+  direction: "colDown",
+  adjustLoopPointName: "lt",
   adjustLoopPoint: () => [0, 1],
-  loopDirection: false
+  loopDirection: false,
 });
 
 export const lbAnti: modeType = makeLoop({
   point: (row) => [row - 1, 0],
-  direction: 'rowRight',
-  adjustLoopPointName: 'lb',
+  direction: "rowRight",
+  adjustLoopPointName: "lb",
   adjustLoopPoint: (row) => [row - 2, 0],
-  loopDirection: false
+  loopDirection: false,
 });
 
 export const rbAnti: modeType = makeLoop({
   point: (row, col) => [row - 1, col - 1],
-  direction: 'colUp',
-  adjustLoopPointName: 'rb',
+  direction: "colUp",
+  adjustLoopPointName: "rb",
   adjustLoopPoint: (row, col) => [row - 1, col - 2],
-  loopDirection: false
+  loopDirection: false,
 });
 
 export const rtAnti: modeType = makeLoop({
   point: (row, col) => [0, col - 1],
-  direction: 'rowLeft',
-  adjustLoopPointName: 'rt',
+  direction: "rowLeft",
+  adjustLoopPointName: "rt",
   adjustLoopPoint: (row, col) => [1, col - 1],
-  loopDirection: false
+  loopDirection: false,
 });

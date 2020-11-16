@@ -1,8 +1,8 @@
-import {modeType} from './index';
+import { modeType } from "./index";
 
 type centerMakerType = (row: number, col: number) => [number, number];
 
-import {getRandom} from "../util";
+import { getRandom } from "../util";
 
 /**
  * 更具某一点进行扩散运动
@@ -35,17 +35,28 @@ export function makeSpread(centerMaker: centerMakerType): modeType {
       let lbDis = this.center[0] + this.col - this.center[1];
       let rtDis = this.row - this.center[0] + this.center[1];
       let rbDis = this.row + this.col - ltDis;
-      return ltDis < this.count + 2 && lbDis < this.count + 2 && rtDis < this.count + 2 && rbDis < this.count + 2;
-    }
-  }
+      return (
+        ltDis < this.count + 2 &&
+        lbDis < this.count + 2 &&
+        rtDis < this.count + 2 &&
+        rbDis < this.count + 2
+      );
+    },
+  };
 }
 
 /**
  *  由任意一点向周围扩散
  */
-export const random: modeType = makeSpread((row, col) => [getRandom(row), getRandom((col))]);
+export const random: modeType = makeSpread((row, col) => [
+  getRandom(row),
+  getRandom(col),
+]);
 
 /**
  *  由中心向外扩散
  */
-export const center: modeType = makeSpread((row, col) => [(row - 1) / 2, (col - 1) / 2]);
+export const center: modeType = makeSpread((row, col) => [
+  (row - 1) / 2,
+  (col - 1) / 2,
+]);

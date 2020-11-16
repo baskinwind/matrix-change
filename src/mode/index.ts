@@ -1,9 +1,9 @@
-import * as random from './random';
-import * as line from './line';
-import * as L from './L';
-import * as circle from './circle';
-import * as spread from './spread';
-import * as loop from './loop';
+import * as random from "./random";
+import * as line from "./line";
+import * as L from "./L";
+import * as circle from "./circle";
+import * as spread from "./spread";
+import * as loop from "./loop";
 
 export interface modeType {
   interval: number;
@@ -20,14 +20,7 @@ export interface modeType {
   end(): boolean;
 }
 
-export {
-  random,
-  line,
-  L,
-  circle,
-  spread,
-  loop,
-}
+export { random, line, L, circle, spread, loop };
 
 export default [
   random.t2b,

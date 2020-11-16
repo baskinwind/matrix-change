@@ -1,4 +1,4 @@
-import {modeType} from './index';
+import { modeType } from "./index";
 
 /**
  *  回字形运动，i-内部 o-外部
@@ -29,8 +29,14 @@ export const i2o: modeType = {
     }
   },
   check(i, j) {
-    return ((i === this.top || i === this.bottom) && j >= this.left && j <= this.right) ||
-      ((j === this.left || j === this.right) && i >= this.top && i <= this.bottom)
+    return (
+      ((i === this.top || i === this.bottom) &&
+        j >= this.left &&
+        j <= this.right) ||
+      ((j === this.left || j === this.right) &&
+        i >= this.top &&
+        i <= this.bottom)
+    );
   },
   next() {
     this.top--;
@@ -40,7 +46,7 @@ export const i2o: modeType = {
   },
   end() {
     return this.top === 0;
-  }
+  },
 };
 
 /**
@@ -58,8 +64,14 @@ export const o2i: modeType = {
     this.right = col - 1;
   },
   check(i, j) {
-    return ((i === this.top || i === this.bottom) && j >= this.left && j <= this.right) ||
-      ((j === this.left || j === this.right) && i >= this.top && i <= this.bottom)
+    return (
+      ((i === this.top || i === this.bottom) &&
+        j >= this.left &&
+        j <= this.right) ||
+      ((j === this.left || j === this.right) &&
+        i >= this.top &&
+        i <= this.bottom)
+    );
   },
   next() {
     this.top++;
@@ -69,5 +81,5 @@ export const o2i: modeType = {
   },
   end() {
     return this.top === this.bottom || this.top + 1 === this.bottom;
-  }
+  },
 };

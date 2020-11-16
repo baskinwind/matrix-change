@@ -10,7 +10,7 @@ export class Event {
 
   $on<T>(eventName: string, fn: (event: T, ...rest: any[]) => void): this {
     if (!this._events[eventName]) {
-      this._events[eventName] = []
+      this._events[eventName] = [];
     }
     this._events[eventName].push(fn);
     return this;
@@ -62,7 +62,7 @@ export class Event {
   $emit<T>(eventName: string, event?: T, ...rest: any[]) {
     let cbs = this._events[eventName];
     if (cbs) {
-      cbs.forEach(func => func.call(this, event, ...rest));
+      cbs.forEach((func) => func.call(this, event, ...rest));
     }
     return this;
   }

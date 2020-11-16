@@ -1,10 +1,10 @@
-import {modeType} from './index';
+import { modeType } from "./index";
 
 /**
  *  根据随机值产生的线性动画归类，方向代表 t-上 b-下 l-左 r-右
  */
 
-import {getRandom} from "../util";
+import { getRandom } from "../util";
 
 /**
  *  按照行划分，以 getRandom(row + col, 2) 为一组，每次运动每组一块
@@ -27,7 +27,7 @@ export const l2r: modeType = {
   },
   end() {
     return this.count === this.base - 1;
-  }
+  },
 };
 
 /**
@@ -51,7 +51,7 @@ export const r2l: modeType = {
   },
   end() {
     return this.count === 0;
-  }
+  },
 };
 
 /**
@@ -75,7 +75,7 @@ export const t2b: modeType = {
   },
   end() {
     return this.count === this.base - 1;
-  }
+  },
 };
 
 /**
@@ -99,5 +99,5 @@ export const b2t: modeType = {
   },
   end() {
     return this.count === 0;
-  }
+  },
 };

@@ -1,6 +1,6 @@
 import * as random from "./random";
 import * as line from "./line";
-import * as L from "./_l";
+import * as L from "./l";
 import * as circle from "./circle";
 import * as spread from "./spread";
 import * as loop from "./loop";

@@ -1,5 +1,5 @@
 import mode from "./mode/index";
-import Matrix from "./_matrix";
+import Matrix from "./matrix";
 
 export { mode, Matrix };
 export { makeMatrixChange } from "./make-matrix-change";

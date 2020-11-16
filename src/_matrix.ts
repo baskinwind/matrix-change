@@ -1,6 +1,6 @@
 import { modeType } from "./mode/index";
 
-import { Event } from "./_event";
+import { Event } from "./event";
 
 export interface hitPointParams<T> {
   point: {

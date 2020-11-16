@@ -1,7 +1,7 @@
 import { modeType } from "./mode/index";
 
 import Matrix, { hitPointParams } from "./matrix";
-import { initContainerLayout, initDom } from "./initHtml";
+import { initContainerLayout, initDom } from "./init-html";
 import { getRandom, getRandomStr } from "./util";
 
 interface matrixOption {

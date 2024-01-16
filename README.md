@@ -30,9 +30,7 @@ import {makeMatrixChange, mode} from 'matrixchange'
 
 ## demo
 
-[Demo](http://acohome.cn/demo/matrix/index.html)
-
-[jsfiddle](https://jsfiddle.net/acccco/pgff8k5j/)
+[jsfiddle](https://jsfiddle.net/acccco/hy78ntj9)
 
 ## 使用
 
